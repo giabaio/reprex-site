@@ -1,0 +1,40 @@
+project:
+  type: website
+  resources: 
+     - "*.mp3"
+  render: 
+     - "*.qmd"
+     - "*.Rmd"
+     - "*.pdf"
+     - "!talks/info.qmd"
+
+website:
+  title: "Gianluca Baio's webpage"
+  site-url: "https://gianluca.statistica.it"
+  favicon: "media/img/icon.png"
+  page-navigation: true
+  page-footer: 
+    border: false
+    left: "&copy; Gianluca Baio 2022-2024"
+    center: ""
+    right:
+      - icon: twitter 
+        href: https://twitter.com/gianlubaio
+      - icon: linkedin
+        href: https://www.linkedin.com/in/gianluca-baio-b893879/
+      - icon: github
+        href: https://github.com/giabaio
+  navbar:
+    logo: "media/img/logo.png"
+    title: false
+    right:
+      - text: Talks
+        href: talks/index.qmd
+
+format:
+  html:
+    theme: default
+    css: css/mystyles.css
+    toc: true
+    page-layout: custom
+    fontsize: 1.0em

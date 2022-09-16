@@ -1,0 +1,22 @@
+---
+date: 2017-06-07T15:00:00  # Schedule page publish date.
+title: "Blogging and Science Communication"
+time_start: 2017-06-07T15:00:00
+time_end: 2017-06-07T16:00:00
+abstract: "Invited presentation"
+abstract_short: ""
+event: "Science Communication Workshop, King's University London"
+event_url: ""
+location: "London, United Kingdom"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: []
+# Links (optional).
+url_pdf: ""
+url_slides: "Talk_Kings.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}

@@ -1,0 +1,73 @@
+---
+title: "One year of Covid-19 in 5 major European countries: a comparative analysis of excess mortality"
+
+event: 18th Armitage Workshop (seminar)
+event_url: https://www.mrc-bsu.cam.ac.uk/news-and-events/armitage-lectureships-and-workshops/18th-armitage-lecture-and-workshop/
+
+location: MRC Biostatistics Unit
+address: 
+  street: East Forvie Building, Forvie Site, Robinson Way
+  city: Cambridge
+  region: 
+  postcode: 'CB2 0SR'
+  country: UK
+
+summary: As part of the Armitage Workshop, as the 18th Armitage Lecturer, I've been invited to give a seminar in the MRC BSU series.
+abstract: ""
+
+# Talk start and end times.
+#   End time can optionally be hidden by prefixing the line with `#`.
+date: "2021-11-09T14:30:00"
+date_end: "2021-11-09T15:30:00"
+all_day: false
+
+# Schedule page publish date (NOT talk date).
+publishDate: "2021-11-15T10:00:00"
+
+# Is this a featured talk? (true/false)
+featured: false
+
+links:
+# - icon: twitter
+#   icon_pack: fab
+#   name: Follow
+#   url: https://twitter.com/gianlubaio
+- icon: 
+  icon_pack: 
+  name: Slides
+  url: /slides/armitage/seminar/index.html
+- icon: github 
+  icon_pack: fab
+  name: Code
+  url: https://github.com/gkonstantinoudis/ExcessDeathsCOVID
+- icon: laptop
+  icon_pack: fas
+  name: Shiny webapp
+  url: http://atlasmortalidad.uclm.es/excess/
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+
+# Markdown Slides (optional).
+#   Associate this talk with Markdown slides.
+#   Simply enter your slide deck's filename without extension.
+#   E.g. `slides = "example-slides"` references `content/slides/example-slides.md`.
+#   Otherwise, set `slides = ""`.
+slides: ""
+
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects:
+- []
+
+---
+
+{{< include ../info.qmd >}}
+
+```{=html}
+<iframe class="slide-deck" src="/slides/armitage/seminar" width="800" height "600"></iframe>
+```

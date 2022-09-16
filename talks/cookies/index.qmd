@@ -1,0 +1,23 @@
+---
+date: 2013-11-07T14:00:00 # Schedule page publish date.
+title: "Come to the dark side: we got cookies! An introduction to Bayesian statistics"
+time_start: 2013-11-07T14:00:00
+date_end: 2013-11-07T15:00:30
+abstract: "Keynote presentation"
+abstract_short: ""
+event: "28th Annual Chemometrics Symposium of the Dutch Chemometrics Society"
+event_url: "http://www.chemometrie.nl/"
+location: "Utrecht (Netherlands)"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+#projects: [""]
+# Links (optional).
+url_pdf: ""
+url_slides: "BayesCookies.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}
+

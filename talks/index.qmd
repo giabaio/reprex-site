@@ -1,0 +1,18 @@
+---
+title: "Recent & Upcoming Talks"
+subtitle: ""
+listing:
+  contents: .
+  type: default
+  date-format: "D MMMM, YYYY"
+  categories: false
+  sort: "date desc"
+  sort-ui: true
+  filter-ui: true
+  fields: [date,title,event,location]
+  page-size: 7
+page-layout: full
+title-block-banner: false
+pagetitle: "{{< meta title >}}"
+---
+

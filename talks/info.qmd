@@ -1,0 +1,85 @@
+---
+header-includes: |
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet"/>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+---
+
+<style>
+.button {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 0px!important;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0px 0px;
+  border-radius: 8px;
+}
+</style>
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+slides=NULL
+if(!is.null(rmarkdown::metadata$links)) {
+  links=rmarkdown::metadata$links %>% bind_rows()
+  if(links %>% filter(grepl("Slides",name)) %>% nrow()>0) {
+    slides=links %>% filter(grepl("Slides",name)) %>% pull(url)
+  }
+}
+if(nchar(rmarkdown::metadata$url_slides)>0) {slides=rmarkdown::metadata$url_slides}
+
+github=NULL
+if(!is.null(rmarkdown::metadata$links)) {
+  links=rmarkdown::metadata$links %>% bind_rows()
+  if(any(grepl("icon",names(links)))) {
+    if((links %>% filter(grepl("github",icon)) %>% nrow()>0)) {
+      github=links %>% filter(grepl("github",icon)) %>% pull(url)
+    }
+  }
+}
+
+year=rmarkdown::metadata$date |> as.Date() |> format("%Y")
+
+start=rmarkdown::metadata$date |> lubridate::as_datetime()
+time_start=paste0(format(start,format="%H"),":",format(start,format="%M"))
+end=rmarkdown::metadata$date_end |> lubridate::as_datetime()
+time_end=paste0(format(end,format="%H"),":",format(end,format="%M"))
+```
+
+```{r}
+#| echo: false
+button=function(x,icon,txt) { 
+  htmltools::HTML(paste0('<a class="btn btn-outline-dark btn-sm" href="',x,'" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-',icon,'" role="img" aria-label="',txt,'"></i> ',txt,'</a>'))
+}
+if(!is.null(slides)){
+  a=button(slides,"slideshare","Slides")
+} else {a=NULL}
+if(!is.null(github)){
+  b=button(github,"github","GitHub repo")
+} else {b=NULL}
+```
+
+```{r}
+#| echo: false
+#| eval: true
+#| results: asis
+cat(paste(a,b))
+```
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+tibble(
+  "**Date**"=rmarkdown::metadata$date |> lubridate::as_datetime() |> lubridate::date() |> format("%d %B %Y"),
+  "**Time**"=paste0(time_start," -- ",time_end),
+  "**Event**"=rmarkdown::metadata$event,
+  "**Location**"=paste0(rmarkdown::metadata$location,". ",rmarkdown::metadata$address$street,", ",rmarkdown::metadata$address$city)
+) %>% t() %>%  knitr::kable()
+```

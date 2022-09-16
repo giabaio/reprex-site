@@ -1,0 +1,23 @@
+---
+date: 2019-12-16T11:00:00  # Schedule page publish date.
+title: "Bayesian parametric models to handle missing longitudinal outcome data in trial-based health economic evaluations"
+time_start: 2019-12-16T11:00:00
+date_end: 2019-12-16T11:30:00
+abstract: "Invited presentation"
+abstract_short: ""
+event: "12th International Conference of the ERCIM WG on Computational and Methodological Statistics"
+event_url: "http://www.cmstatistics.org/CMStatistics2019/invited.php"
+location: "London, United Kingdom"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["missing-data"]
+# Links (optional).
+url_pdf: ""
+url_slides: "ERCIM_2019.pdf"
+url_video: ""
+url_code: ""
+
+---
+
+{{< include ../info.qmd >}}

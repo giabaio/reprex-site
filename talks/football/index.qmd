@@ -1,0 +1,22 @@
+---
+date: 2009-03-12T10:30:00  # Schedule page publish date.
+title: " Bayesian hierarchical model for the prediction of football results"
+time_start: 2009-03-12T10:30:00
+time_end: 2009-03-12T11:00:00
+abstract: "Seminar"
+abstract_short: ""
+event: "Department of Statistics, University of Florence (Italy)"
+event_url: ""
+location: "Florence (Italy)"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["football"]
+# Links (optional).
+url_pdf: ""
+url_slides: "FootballFlorence.pdf"
+url_video: ""
+url_code: ""
+---
+
+This talk has also been presented at the [23rd International Workshop on Statistical Modelling](http://www.statmod.org/workshops_archive_proceedings_2008.htm), Utrecht (Netherlands), July 2008.

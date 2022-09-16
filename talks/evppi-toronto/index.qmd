@@ -1,0 +1,24 @@
+---
+date: 2016-02-19T15:00:00  # Schedule page publish date.
+title: "Value of Information in practice. No, seriously: in practice!"
+time_start: 2016-02-19T15:00:00
+date_end: 2016-02-19T16:00:00
+abstract: "Invited presentation"
+abstract_short: ""
+event: "Toronto Health Economics and Technology Assessment (THETA) Rounds"
+event_url: "http://theta-utoronto.v1.libguides.com/Rounds"
+location: "Toronto, Canada"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["voi"]
+# Links (optional).
+url_pdf: ""
+url_slides: ""
+url_code: ""
+
+---
+
+{{< include ../info.qmd >}}
+
+{{< video https://recordings.join.me/0dEppwL_0UaQExzPqn6pQg width="1200" height="900" >}}

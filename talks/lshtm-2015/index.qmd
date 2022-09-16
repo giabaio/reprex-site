@@ -1,0 +1,22 @@
+---
+date: 2015-09-22T16:30:00  # Schedule page publish date.
+title: "Sample Size calculations for Stepped Wedge Trials"
+time_start: 2015-09-22T16:30:00
+date_end: 2016-09-22T17:00:00
+abstract: "Invited presentation"
+abstract_short: ""
+event: "Stepped Wedge Trials Symposium"
+event_url: "http://evaluation.lshtm.ac.uk/stepped-wedge-trials/"
+location: "London School of Hygiene and Tropical Medicine, United Kingdom"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["steppedwedge"]
+# Links (optional).
+url_pdf: ""
+url_slides: "LSHTM_Symposium.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}

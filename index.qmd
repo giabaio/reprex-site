@@ -1,0 +1,116 @@
+---
+###page-layout: custom
+---
+
+::::: {.grid}
+::: {.g-col-12 .g-col-md-3}
+### 
+
+<center>
+<img class="img-round" src="media/img/avatar.jpg">
+</center>
+
+## Gianluca Baio
+
+<span style="color:grey;font-size:.9rem;">ˈdʒiːan 'luːkə ˈbaɪəʊ</span>
+
+<p><span><audio controls style="width: 45%; margin-bottom: 0px">
+<source src="./media/say-my-name.mp3" type="audio/mp3">
+</audio>
+</span></p>
+
+<span style="font-size:.9rem;">
+Professor of Statistics and Health Economics    
+[Department of Statistical Science]()    
+[University College London]()
+</span>
+
+[{{< fa brands twitter size=lg title="Follow me on Twitter" color="#24568c" >}}](https://twitter.com/gianlubaio)
+[{{< fa brands linkedin size=lg title="Follow me on LinkedIn" color="#24568c" >}}](https://www.linkedin.com/in/gianluca-baio-b893879/)
+[{{< ai orcid size=lg color="#24568c" >}}](https://orcid.org/0000-0003-4314-2570)
+[{{< ai researchgate size=lg color="#24568c" >}}](https://www.researchgate.net/profile/Gianluca_Baio)
+[{{< fa brands github size=lg title="Check my repos" color="#24568c" >}}](https://github.com/giabaio)
+[{{< ai arxiv size=lg color="#24568c"  >}}](https://arxiv.org/a/baio_g_1.html)
+:::
+
+:::: {.g-col-12 .g-col-md-9}
+# Biography
+
+<div style="float: right;margin-left: 20px;margin-top: 0px;margin-bottom:0px;">
+{{< video src="https://youtu.be/0f0Cr3Oz8uQ" width="100%" height="65%" >}}
+</div>
+
+I am a Professor of Statistics and Health Economics in the [Department of Statistical Science](https://www.ucl.ac.uk/statistics/) at [University College London](https://www.ucl.ac.uk/). I graduated in Statistics and Economics from the [University of Florence](https://www.disia.unifi.it/) (Italy). I then completed a PhD programme in Applied Statistics again at the University of Florence, after a period at the [Program on the Pharmaceutical Industry at the MIT Sloan School of Management](http://web.mit.edu/popi/), Cambridge (USA). I then worked as a Research Fellow and then Lecturer in the Department of Statistical Sciences at University College London (UK). 
+
+My main interests are in Bayesian statistical modelling for cost effectiveness analysis and decision-making problems in the health systems, hierarchical/multilevel models and causal inference using the decision-theoretic approach. 
+
+I lead the [Statistics for Health Economic Evaluation research group](https://egon.stats.ucl.ac.uk/research/statistics-health-economics/) within the department of Statistical Science. Our activity revolves around the development and application of Bayesian statistical methodology for health economic evaluation, e.g. cost-effectiveness or cost-utility analysis. We work in close collaboration with academics both within UCL and at other institutions and our activities include a series of seminars aimed at statisticians, health economists and clinicians working in economic evaluations. I collaborate with the UK [National Institute for Health and Care Excellence](https://www.nice.org.uk/) (NICE) as a Scientific Advisor on Health Technology Appraisal projects.
+
+I have served as Secretary (2014-2016) and then Programme Chair (2016-2018) in the Section on Biostatistics and Pharmaceutical Statistics of the [International Society for Bayesian Analysis](https://bayesian.org/sectionschapters/biostatistics-and-pharmaceutical-statistics/). I have served as an Associate Editor for the [_Journal of the Royal Statistical Society_ (Series A)](https://rss.pericles-prod.literatumonline.com/journal/1467985X) for the period 2015-2021 and have been a member of the Editorial Board of [_Significance_](https://www.significancemagazine.com/), the magazine of both the [Royal Statistical Society](https://www.rss.org.uk) and the [American Statistical Association](http://www.amstat.org/) in the period 2012-2021. I also am a member of the Scientific Committee of the [Bayes Workshop](http://www.bayes-pharma.org/) and a member of the technical sub-group tasked by the NHS Medical Director to review the statistical and methodological aspects related to the use of the [Summary Hospital-level Mortality Indicator](https://digital.nhs.uk/data-and-information/publications/ci-hub/summary-hospital-level-mortality-indicator-shmi). I have been the [18th Armitage Lecturer](https://www.mrc-bsu.cam.ac.uk/news-and-events/armitage-lectureships-and-workshops/18th-armitage-lecture-and-workshop/) in November 2021 (a full video of the talk is [here](https://www.youtube.com/watch?v=Yldk-QNknDc)).
+
+I am currently the Head of the UCL Department of Statistical Science (on a 5 years term, from September 2021).
+
+::: {.callout-wink}
+##
+
+{{< fa face-grin-wink >}} My **personal** view of the world is that statisticians should be in charge of everything. And, come to think about it, ***Bayesian*** statisticians should be in charge of all statisticians.
+
+And brexit sucks. &nbsp; ![](media/img/EU.jpg){width="40px" height="30px"}
+:::
+::::
+
+::: {.g-col-12 .g-col-md-4 .g-start-md-4}
+#### Interests
+
+- Bayesian statistics
+- Health economic evaluation
+- Causal inference from observational data
+- Philosophy and history of statistics
+:::
+
+:::: {.g-col-12 .g-col-md-4}
+#### Education
+
+::: {.education}
+- PhD in Applied Statistics, 2005   
+   - University of Florence
+   
+- BSc/MSc Statistics and Economics, 1998   
+   - University of Florence
+:::
+::::
+
+::: {.g-col-12 .g-col-md-3}
+
+## Contacts
+:::
+
+::: {.g-col-12 .g-col-md-9}
+## [Some text]{style="color:white;"} 
+
+{{< fa envelope size=lg >}} &nbsp; [g.baio@ucl.ac.uk](mailto:g.baio@ucl.ac.uk)    
+{{< fa phone-flip size=lg >}} &nbsp; +44(0)20 7679 1248    
+{{< fa brands twitter size=lg >}} &nbsp; [DM me](https://twitter.com/gianlubaio)    
+{{< fa location-pin size=lg >}} &nbsp;&nbsp; Room 131, Department of Statistical Science, University College London, 1-19 Torrington Place, London, WC1E 7HB    
+{{< fa compass size=lg >}} &nbsp; In a normal world, enter 1-19 Torrington Place from the main entrance and go up to Floor 1. Go along the corridor for its full length.    
+
+
+```{r}
+#| echo: false
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-0.13467, lat=51.52166, popup="UCL Stats Science") %>% 
+  setView(lng=-0.13467, lat=51.52166, zoom=16.5)
+```
+:::
+
+:::: {.g-col-12}
+::: {.last-updated}
+Last updated: `r format(Sys.Date(),"%d %b %Y")`
+:::
+::::
+
+
+:::::
+

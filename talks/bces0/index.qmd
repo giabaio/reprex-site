@@ -1,0 +1,24 @@
+---
+date: 2013-12-15T09:00:00  # Schedule page publish date.
+title: "Bayesian models for cost-effectiveness analysis in the presence of structural zero costs"
+time_start: 2013-12-15T09:00:00
+date_end: 2013-12-15T09:30:30
+abstract: "Invited presentation"
+abstract_short: ""
+event: "6th International Conference of the ERCIM WG on Computational and Methodological Statistics"
+event_url: "http://www.cmstatistics.org/ERCIM2013/"
+location: "London (UK)"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+#projects: [""]
+# Links (optional).
+url_pdf: ""
+url_slides: "ERCIM_Baio.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}
+
+I have given this presentation also at as an invited seminar at the at the University of Girona (Spain), April 2014 and at [13th World Congress of the international Health Economics Association](https://healtheconomics.site-ym.com/page/MilanCongress) in Milan (Italy), July 2015.

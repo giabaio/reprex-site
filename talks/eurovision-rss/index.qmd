@@ -1,0 +1,22 @@
+---
+title: "Evidence of bias in the Eurovision song contest: modelling the votes using Bayesian hierarchical models"
+date: 2014-09-03T14:00:00 # Schedule page publish date.
+time_start: 2014-09-03T14:00:00
+date_end: 2014-09-03T14:30:00
+abstract: "Invited presentation"
+abstract_short: ""
+event: "Royal Statistical Society Conference"
+event_url: "https://rss.conference-services.net/programme.asp?conferenceID=4023"
+location: "Sheffield, United Kingdom"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["eurovision"]
+# Links (optional).
+url_pdf: ""
+url_slides: "RSS.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}

@@ -1,0 +1,22 @@
+---
+date: 2017-05-19T10:30:00  # Schedule page publish date.
+title: " Single-Arm Studies in the Regulatory Process"
+time_start: 2017-05-19T10:30:00
+date_end: 2017-05-19T11:00:00
+abstract: "Contributed session"
+abstract_short: ""
+event: "Key Advances in Clinical Trials, International Clinical Trials Day"
+event_url: "http://www.ucl.ac.uk/ictm/events/ictd-2018"
+location: "London (UK)"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["single-arm"]
+# Links (optional).
+url_pdf: ""
+url_slides: "SingleArm.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}

@@ -1,0 +1,22 @@
+---
+date: 2011-07-11T15:00:00  # Schedule page publish date.
+title: "Bayesian Modeling Assessing the Effectiveness of a Vaccination Strategy to Prevent HPV-related Diseases: the BEST Study"
+time_start: 2011-07-11T15:00:00
+date_end: 2011-07-11T15:30:00
+abstract: "Contributed session"
+abstract_short: ""
+event: "8th World Congress of the international Health Economics Association"
+event_url: ""
+location: "Toronto (Canada)"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["hpv"]
+# Links (optional).
+url_pdf: ""
+url_slides: "BaioToronto.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}

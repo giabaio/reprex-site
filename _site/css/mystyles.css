@@ -1,0 +1,163 @@
+/* css styles */
+/* This can be used to specify a wider page on the HTML rendering */
+.page-layout-custom {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.page-layout-full .subtitle {
+  font-size: 1.2rem!important;
+  color: grey;
+}
+
+  
+/* Reduce margins of the sidebar to make it look nicer 
+#quarto-margin-sidebar {
+  margin-right: -300px;
+  margin-left: 300px
+}
+#quarto-document-content {
+  width: 1200px;
+}
+*/
+
+/* These can fiddle with the appearance of authors & affiliations in pages (like research or posts),
+   but it's kind of hard to get this right and it seems optimised to be responsive to different screen sizes...
+
+.quarto-title-meta-author {
+    grid-auto-rows: auto;
+    grid-row: 0;
+}
+
+.quarto-title-meta-author a {
+  color: red!important;
+}
+*/
+
+/* Customise the navigation bar */
+.navbar{
+  padding-left: 10%!important;
+  padding-right: 10%!important;
+  background: #94b9c5 !important;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0,0,0,.11)
+}
+
+.navbar-brand > img {
+  max-height: 36px;
+}
+
+/* Makes the home page image round */
+.img-round {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+/* Creates the special 'brexit' callout */
+div.callout-wink {
+  border-left-color:#03526b;
+}
+
+div.callout-wink .callout-icon::before {
+  background-image: url('media/img/face-grin-wink-solid.svg');
+}
+
+div.callout-wink.callout-style-default {
+  background-color: #c3dfe8;
+  color: #12537e;
+}
+
+/* Formats the education list in the home page */
+.education ul {
+  list-style-type: none;
+}
+.education li:before {
+  font-family: 'FontAwesome';
+  content: '\f19d';
+  margin:0 5px 0 -25px;
+}
+.education ul li li:before {
+  list-style-type: none;
+  color: white;
+  margin:0 5px 0 -60px;
+}
+.education li li {
+  color: grey;
+  font-size: .9rem;
+}
+
+/* Colours */
+.red {
+  color: red;
+}
+.white {
+  color: white;
+}
+.myred {
+  color: #e62b4f;
+}
+.myblue {
+  color: #24568c;
+}
+.purple {
+  color: #3e2f5b;
+}
+.orange {
+  color: #ff8811;
+}
+.olive {
+  color: #334f17;
+}
+.ubuntublue {
+  color: #035AA6;
+}
+.blue{
+  color: #0000FF;
+}
+.spanish-red {
+  color: #c60b1e;
+}
+.spanish-yellow {
+  color: #ffc400;
+}
+.blue90red60 {
+  color: #7e5dc9;
+}
+.blue60red90 {
+  color: #9350c7;
+}
+.red65blue {
+  color:#941494;
+}
+.lightgray {
+  color: #ededed; /*#d3d3d3*/
+}
+.uclblue {
+  /* https://www.ucl.ac.uk/cam/sites/cam/files/migrated-files/ucl-visual-identity-poster.pdf */
+  color: #002855;
+}
+.navbargrey{
+  color: #D5D5D5;
+}
+.magenta {
+  color: #FF00FF;
+}
+.beamer-yellow {
+  color: #fcd000;
+}
+
+/* Format for last-updated */
+.last-updated {
+  font-size:0.75rem; 
+  float: right; 
+  color: grey;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* Creates a background around text to be used in posts authors */
+.author-background {
+ border-width :3px;
+ border-radius: 15px;
+ border-color:#287EC7;
+}

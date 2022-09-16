@@ -1,0 +1,22 @@
+---
+date: 2019-01-24T12:30:00  # Schedule page publish date.
+title: "Dynamic Bayesian Markov model for health economic evaluations of interventions in infectious disease"
+date_end: 2019-01-24T13:30:00
+abstract: "Invited presentation"
+abstract_short: ""
+event: "Seminar series, Department of Infectious Disease Epidemiology, Imperial College London"
+event_url: "https://www.york.ac.uk/che/seminars/economic-evaluation/2018-seminars/gianluca-baio/"
+location: "Imperial College London"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["hpv"]
+# Links (optional).
+url_pdf: ""
+url_slides: "BMM.pdf"
+url_video: ""
+url_code: ""
+
+---
+
+{{< include ../info.qmd >}}

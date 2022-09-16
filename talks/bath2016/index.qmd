@@ -1,0 +1,24 @@
+---
+title: "Efficient Gaussian process regression to calculate the expected value of partial perfect information in health economics"
+date: 2016-09-14T15:00:00  # Schedule page publish date.
+time_start: 2016-09-14T15:00:00
+date_end: 2016-09-14T15:30:00
+abstract: "Invited presentation"
+abstract_short: ""
+event: "5th Workshop on Bayesian Inference for Latent Gaussian Models with Applications"
+event_url: "http://lgm2016.r-inla.org/"
+location: "Bath, United Kingdom"
+
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["voi"]
+
+# Links (optional).
+url_pdf: ""
+url_slides: "Bath.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}

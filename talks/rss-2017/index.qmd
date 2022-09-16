@@ -1,0 +1,35 @@
+---
+date: 2017-09-04T15:00:00  # Schedule page publish date.
+title: "Full Bayesian models to handle missing values in cost-effectiveness analysis from individual level data"
+time_start: 2017-09-04T15:00:00
+date_end: 2017-09-04T15:30:00
+abstract: "Invited presentation"
+abstract_short: ""
+event: "Royal Statistical Society Conference"
+event_url: "https://events.rss.org.uk/rss/frontend/reg/thome.csp?pageID=27378&eventID=93&traceRedir=2&eventID=93"
+location: "Glasgow, United Kingdom"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["missing-data"]
+
+# Links (optional).
+url_pdf: ""
+url_slides: "RSS.pdf"
+url_video: ""
+url_code: ""
+
+links:
+# - icon: twitter
+#   icon_pack: fab
+#   name: Follow
+#   url: https://twitter.com/gianlubaio
+- icon: 
+  icon_pack: 
+  name: Slides
+  url: /slides/rss-sw-2021
+---
+
+{{< include ../info.qmd >}}
+
+This work was firstly presented at the Conference of the Royal Statistical Society, in Glasgow, in 2017. A later version has been presented at the RSS-South West group seminar series.

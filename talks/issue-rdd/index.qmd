@@ -1,0 +1,28 @@
+---
+date: 2016-11-07T14:00:00  # Schedule page publish date.
+title: "Statistical issues in the application of the regression discontinuity design for causal inference from clinical administrative databases"
+time_start: 2016-11-07T14:00:00
+date_end: 2016-11-07T15:00:00
+abstract: " Keynote lecture "
+abstract_short: ""
+event: 'Symposium "Statistical Methods for Recurrent Data workshop"'
+event_url: "http://www.oncolille.fr/statistical-methods-for-recurrent-data-workshop/"
+location: "Lille (France)"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["causal"]
+# Links (optional).
+url_pdf: ""
+url_slides: "Lille_2016.pdf"
+url_video: ""
+url_code: ""
+
+---
+
+{{< include ../info.qmd >}}
+
+I have also presented (a shorter version of) this talk at the World Meeting of the [International Society for Bayesian Analysis](https://bayesian.org), Forte Village, (Italy) in June 2016 and at the [Workshop on The Regression Discontinuity Design: Methodological Issues and Applications in Economics, Statistics and Epidemiology](https://www.ucl.ac.uk/statistics/research/statistics-health-economics/workshop_rdd), London, June 2017.
+
+
+

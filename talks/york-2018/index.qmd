@@ -1,0 +1,22 @@
+---
+title: "Quick & clean: computationally efficient methods for Value of Information measures"
+date: 2018-09-19T12:15:00 # Schedule page publish date.
+time_start: 2018-09-19T12:15:00
+date_end: 2018-09-19T13:15:30
+abstract: "Invited presentation"
+abstract_short: ""
+event: "Centre for Health Economics Seminar Series"
+event_url: "https://www.york.ac.uk/che/seminars/economic-evaluation/2018-seminars/gianluca-baio/"
+location: "University of York"
+# Projects (optional).
+#   Associate this talk with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects: ["voi"]
+# Links (optional).
+url_pdf: ""
+url_slides: "HandoutYork.pdf"
+url_video: ""
+url_code: ""
+---
+
+{{< include ../info.qmd >}}
