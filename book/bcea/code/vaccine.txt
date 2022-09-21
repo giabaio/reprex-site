@@ -1,0 +1,108 @@
+model {
+# Define the number of people in each group n[v,t], where t=1,2 is status quo vs 
+#  vaccination and v=1,2 is non vaccinated vs vaccinated
+# t=1: If the vaccine is not available, no one will use it
+    #  number of vaccinated in the population when vaccine is not available
+    V[1] <- 0
+    # number of individuals in the two groups
+    n[1,1] <- N - V[1]    # non vaccinated
+    n[2,1] <- V[1]        # vaccinated
+	
+# t=2: When the vaccine is available, some will use it, some won't
+    # number of vaccinated in the population if vaccine made available
+    V[2] ~ dbin(phi,N)
+    # number of individuals in the two groups if the vaccine is available 
+    n[1,2] <- N - V[2]    # non vaccinated
+    n[2,2] <- V[2]        # vaccinated
+
+
+# Vaccination coverage 
+    phi ~ dbeta(a.phi,b.phi)
+
+
+# Probability of experiencing the clinical outcomes (N.outcomes = 7)
+    # 1. Influenza infection
+    # 2. GP visits
+    # 3. Minor complications (repeat visit)
+    # 4. Major complications (pneumonia)
+    # 5. Hospitalisations
+    # 6. Death
+    # 7. Adverse events due to vaccination
+    for (r in 1:4) { 
+        beta[r] ~ dbeta(a.beta[r],b.beta[r])
+    }
+    for (r in 5:6) {
+        beta[r] ~ dlnorm(a.beta[r],b.beta[r])
+    }
+    beta[N.outcomes] ~ dbeta(a.beta[N.outcomes],b.beta[N.outcomes])
+
+
+# Vaccine effectiveness in reducing influenza (for v=1, it is obviously 0)
+    rho[1] <- 0
+    rho[2] ~ dlnorm(mu.rho,tau.rho)
+
+
+# Probability of influenza infection
+   for (t in 1:2) {
+        for (v in 1:2) {
+            pi[t,v] <- beta[1]*(1-rho[v])
+        }
+   }
+
+
+# Number of patients experiencing the events for both interventions & compliance groups
+   for (t in 1:2) {
+        for (v in 1:2) {
+            Infected[t,v] ~ dbin(pi[t,v],n[v,t])
+            GP[t,v] ~ dbin(beta[2],Infected[t,v])
+            Repeat.GP[t,v] ~ dbin(beta[3],GP[t,v])
+            Pneumonia[t,v] ~ dbin(beta[4],GP[t,v])
+            Hospital[t,v] ~ dbin(beta[5],GP[t,v])
+            Death[t,v] ~ dbin(beta[6],GP[t,v])
+            Trt[1,t,v] ~ dbin(gamma[1],GP[t,v])
+            Trt[2,t,v] ~ dbin(gamma[2],Mild.Compl[t,v])
+            Mild.Compl[t,v] <- Repeat.GP[t,v] + Pneumonia[t,v]
+        }
+    }
+    Adverse.events ~ dbin(beta[N.outcomes],n[2,2])
+
+
+# Probability of experiencing other events (impacts on costs and QALYs/QALDs)
+    for (i in 1:2) {                       # Treatment with antibiotics after GP visit
+        gamma[i] ~ dbeta(a.gamma[i],b.gamma[i])
+    }
+    delta ~ dpois(a.delta)                 # Number of prescriptions of antivirals
+    xi ~ dbeta(a.xi,b.xi)                  # Taking OTC
+    eta ~ dbeta(a.eta,b.eta)               # Being off work
+    lambda ~ dlnorm(mu.lambda,tau.lambda)  # Length of absence from work for influenza
+
+
+# Costs of clinical resourses (N.resources = 8)
+    # 1. Cost of GP visit
+    # 2. Cost of hospital episode
+    # 3. Cost of vaccination
+    # 4. Cost of time to receive vaccination
+    # 5. Cost of days work absence due to influenza
+    # 6. Cost of antiviral drugs
+    # 7. Cost of OTC treatments
+    # 8. Cost of travel to receive vaccination
+    for (r in 1:N.resources) {
+        psi[r] ~ dlnorm(mu.psi[r],tau.psi[r])
+    }
+
+
+# Quality of life adjusted days/years loss
+    # 1. Influenza infection
+    # 2. GP visits (no QALD/Y loss)
+    # 3. Minor complications (repeat visit, no QALD/Y loss)
+    # 4. Major complications (pneumonia)
+    # 5. Hospitalisations (same QALD/Y loss as pneumonia)
+    # 6. Death
+    # 7. Adverse events due to vaccination
+    omega[1] ~ dlnorm(mu.omega[1],tau.omega[1])
+    omega[2] <- 0; omega[3] <- 0; 
+    for (r in 4:N.outcomes) {
+        omega[r] ~ dlnorm(mu.omega[r],tau.omega[r])
+    }
+}
+

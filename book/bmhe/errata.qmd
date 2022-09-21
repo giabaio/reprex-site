@@ -1,0 +1,37 @@
+---
+# Page title
+title: Errata corrige
+subtitle: Bayesian Methods in Health Economics
+# Date page published
+date: 2019-04-01
+# Position of this page in the menu. Remove this option to sort alphabetically.
+weight: 10
+page-layout: full
+---
+
+::: {.callout-warning}
+__Errata corrige__
+:::
+
+Despite our best effort, there are a few typos or imprecisions in the published version of _Bayesian Methods in Health Economics_. We report those we have identified and welcome (well... we hope there won't be many, but you know...) notification of any other mistakes (that can be highlighted by [emailing me](mailto:g.baio@ucl.ac.uk)).
+
+- Page 21. The interpretation of the cost-benefit analysis is incorrect. In fact, the favourite option should be $a$ (and not $b$, as reported in the book), since the cost for Option $a$ relative to the cost of hospitalization without vaccination is smaller, which is preferable. This is due to successive revisions to this examples (in the previous version the result was the other way around and the text was not updated properly).
+- Page 38. There is a typo in the equation for Bayes' rule to compute the posterior probability $\Pr(D\mid +)$. The correct calculation should be
+$$ \Pr(D\mid +) = \frac{0.99\times 0.1}{0.99\times 0.1 + 0.05\times 0.9} = \frac{0.09}{\boldsymbol{0.1485}} = 0.667 $$
+(so the correct value is 0.1485 --- not 1.135 as uncorrectedly reported in the book).
+- Page 45, figure 2.5: the bottom part of the decision tree shows the possible outcomes when the operation does not go well. However, the headings for the branch out of the "Patient lives" random node are both "No". The top one should read "Yes" (much as in the top half of the tree).
+- Page 120. There is a slight inconsistency between the code used to run the model 
+
+```{r}
+#| eval: false
+model = jags(data=data,inits=inits,parameters.to.save=params,
+             model.file=filein,n.chains=2,n.iter=10000,n.burnin=4500,
+             n.thin=1,DIC=TRUE)
+```
+
+and the text presented later on page 121, where it is stated that "... we consider 9500 simulations with a burn-in of 4500 for 2 chains". The correct command replaces `n.iter=10000` with `n.iter=9500`.
+- Pages 136-137. Again, there is a slight inconsistency in the code presented on page 136, where I have used `n.burnin=4500` and `n.thin=91` and the text and output presented on page 137, in which `n.burnin=9500` and `n.thin=81`.
+- Page 147. In the call to `bcea` (approximately one third one the page), there is a reference to a (now) deprecated argument `Ktable`. I found this was largely irrelevant and thus removed it from the code. Everything else in this bit of code does work correctly, though.
+- Because of the changes in the `R2jags` package, the code in chapter 4 and 5 should be slightly modified to say `attach.jags()` instead of `attach.bugs()` (see more details [here](https://gianluca.statistica.it/post/2013-10-19-r2jags-bcea-the-examples-from-bmhe/)) 
+
+

@@ -1,0 +1,36 @@
+READ ME FILE
+
+The collection of R and JAGS scripts downloadable from this webpage allow you to run the examples presented in the book.
+By default, the codes assume the following directories structure:
+
+
+Utils.R
+ch2
+      MCMC.R
+      modelNormal.R
+      modelNormal.txt
+      phbirths.dta
+ch3
+      HEexample.R
+      model.txt
+      modelEVPPI_rho.txt
+      modelEVPPI_gamma.txt
+ch4
+      modelNormal.R
+      modelNormalBlocking.txt
+      modelNormal2.txt
+ch5
+      acupuncture.R
+      dataRCTacupuncture.csv
+      actptRCT.txt
+      actptRCT_gamma.txt
+      actptRCT_logN.txt
+      EvSynth.R
+      EvSynth.txt
+      MarkovModel.R
+      MarkovModel.txt
+
+
+In other words, there is a root directory in which the utility file Utils.R and the 4 directories (one for each chapter) including the scripts for the examples are saved.
+
+Of course, you may change the set up and save all files in a single folder, or rename the folders, or whatever. However, in that case, some commands may not work (R will typically complain about not finding files or links).

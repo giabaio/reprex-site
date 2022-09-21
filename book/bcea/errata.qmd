@@ -1,0 +1,24 @@
+---
+# Page title
+title: Errata corrige
+subtitle: Bayesian Cost-Effectiveness Analysis with the R package BCEA
+# Date page published
+date: 2019-04-01
+# Position of this page in the menu. Remove this option to sort alphabetically.
+weight: 10
+page-layout: full
+---
+
+::: {.callout-warning}
+__Errata corrige__
+:::
+
+Despite our best effort, there are a few typos or imprecisions in the published version of _Bayesian Cost-Effectiveness Analysis with the R package BCEA_. We report those we have identified and welcome (well... we hope there won't be many, but you know...) notification of any other mistakes (that can be highlighted by [emailing me](mailto:g.baio@ucl.ac.uk)).
+
+- Page 32 (Table 2.1). The first two logNormal distributions are defined in terms of precisions (`1/sdlog`), while the remaining variables modelled as logNormal are defined in terms of standard deviations.   
+- Page 42 (section 2.3.2). The first line of the code should read
+
+```{r}
+#| eval: false
+load(url("https://gianluca.statistica.it/BCEABook/WebMaterial/vaccine.RData"))
+```

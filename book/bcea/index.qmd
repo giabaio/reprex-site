@@ -1,0 +1,26 @@
+---
+title: "Bayesian Cost-Effectiveness Analysis with the R package BCEA"
+author: "Gianluca Baio"
+date: 2018-03-10T22:16:14-05:00
+categories: ["BCEA", "Bayesian statistics", "Health economics"]
+image_preview: "BCEA_cover.jpeg"
+weight: 20
+page-layout: full
+---
+
+<br><br>
+
+<div style="float: right;margin-left: 50px;margin-top: -50px;margin-bottom:0px;"> 
+<img src="BCEA_cover.jpeg" alt="" />
+</div>
+
+Check out our [book](http://www.springer.com/gb/book/9783319557168) on the BCEA R package published by Springer in the UseR! series. This book is co-authored by myself, [Andrea Berardi](https://uk.linkedin.com/in/andberardi) and [Anna Heath](https://sites.google.com/site/annaheathstats/).
+
+- [Table of contents](TOC.pdf)
+- [Preface](Preface.pdf)
+- Get a [promotional code](promocode.pdf) - save 20% when ordering online from Springer website
+- [BCEA](../../software/bcea) - an R package to run Bayesian health economic evaluations (used throughout the book and specifically in the examples) 
+
+Journal editors, journalists or bloggers can request a free [Online Review Copy](https://www.springer.com/services+for+this+book?SGWID=0-1772415-3261-0-9783319557168) of the book. This online service makes it especially easy to write a review. 
+
+

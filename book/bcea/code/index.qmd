@@ -1,0 +1,30 @@
+---
+# Page title
+title: Computer code
+subtitle: Bayesian Cost-Effectiveness Analysis with the R package BCEA
+# Date page published
+date: 2021-12-29
+# Position of this page in the menu. Remove this option to sort alphabetically.
+weight: 10
+page-layout: full
+---
+
+<br>
+
+### General/overall files
+This contains a set of functions and scripts that can be used to run the various examples described in the book.
+
+#### General functions
+- [Utils.R](Utils.R): a utility script including several functions used to pre- and post-process data and output.
+
+#### Vaccine example
+- [LoadData.R](LoadData.R): a script to load the data example.
+- [vaccine.txt](vaccine.txt): a `JAGS`/`BUGS` script to run the model.
+- [RunMCMC.R](RunMCMC.R): a script to run the MCMC model (using either `JAGS` or `BUGS`).
+- [vaccine.RData](vaccine.RData): the `R` workspace with the processed output.
+
+#### Smoking cessation example
+- [smoking_data.csv](smoking_data.csv): a spreadsheet with the data.
+- [smoking_model_RE.R](smoking_model_RE.R): a `R` script including the code to run the `JAGS`/`BUGS` model described in Chapter 2.
+
+<br><br>

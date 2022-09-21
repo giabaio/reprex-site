@@ -1,0 +1,35 @@
+---
+title: "Bayesian Methods in Health Economics"
+author: "Gianluca Baio"
+date: 2018-03-10T22:16:14-05:00
+categories: ["BMHE", "Bayesian statistics", "Health economics"]
+image_preview: "BMHE_cover.jpeg"
+page-layout: full
+weight: 10
+page-layout: full
+---
+
+<br><br>
+
+<div style="float: right;margin-left: 50px;margin-top: -50px;margin-bottom:0px;"> 
+<img src="BMHE_cover.jpeg" alt="" />
+</div>
+
+Check out my book (published with [CRC](http://www.crcpress.com/product/isbn/9781439895559;jsessionid=NK0X8neqFeNoO6zoSISl9A__) - available also on [Amazon](http://www.amazon.co.uk/Bayesian-Methods-Health-Economics-Gianluca/dp/1439895554), in ebook format too)
+
+- [Table of contents](TableOfContent.pdf)    
+- [Preface](Preface.pdf)    
+- Get a [promotional code](PromoCode.pdf) - save 20% when ordering online from CRC website
+- Read a [sample](Sample.pdf) for free
+- [BCEA](https://gianluca.statistica.it/software/bcea) - an R package to run Bayesian health economic evaluations (used throughout the book and specifically in the examples) 
+- Some discussion of the book in the blog can be found [here](https://gianluca.statistica.it/post/2012-06-13-the-next-harry-potter/), [here](https://gianluca.statistica.it/post/2012-08-06-a-bunch-of-r-and-jags-scripts/), [here](https://gianluca.statistica.it/post/2012-08-29-serendipity-again/) and [here](https://gianluca.statistica.it/post/2012-08-31-another-bunch-of-r-and-jags-scripts/)
+
+
+The book has received excellent reviews, for example by [Patrick Graham](http://dx.doi.org/10.1111/anzs.12122)
+
+> "_Gianluca Baio’s book is a welcome account of recent developments in methodology for cost-effective analysis in health care... The book may well be the first book-length account of a fully Bayesian approach to cost-effective analysis... a great book for its intended audience of students in an advanced course on statistical methods for health economics... The book would also be suitable for self-study for at least two groups: Bayesian statisticians moving into health economics applications; practicing health economists and epidemiologists keen to learn more about Bayesian methods._"
+
+and by [Mark Strong](http://dx.doi.org/10.1080/01621459.2014.991576)
+
+> "_It is well presented and pleasing to read... One of the strengths of the book is the use of real practical motivating examples, which then serve as vehicles for explaining methods. As each story unfolds, the reader is presented with the right level of mathematical detail to appreciate the problem and the analysis... I would recommend the book to anyone engaged in mathematical modeling for health economic decision-making. It also would not be hard to use the book as the basis for either a short course on Bayesian methods for health economic modeling, or perhaps a masters-level module... a nice addition to the literature on health economics from a statistical perspective._"
+

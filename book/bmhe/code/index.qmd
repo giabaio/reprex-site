@@ -1,0 +1,51 @@
+---
+# Page title
+title: Computer code
+subtitle: Bayesian Methods in Health Economics
+# Date page published
+date: 2020-08-04
+# Position of this page in the menu. Remove this option to sort alphabetically.
+weight: 10
+page-layout: full
+---
+
+<br>
+
+### General/overall files
+- `R/JAGS` code to run the examples (all files at once [here](BMHE.zip)). There's also an accompanying [instruction file](ReadMe)    
+- [Utils.R](Utils.R): script containing some utility functions, for examples to draw traceplots of MCMC chains, or estimating the parameters of suitable distributions to obtain given values for its mean and standard deviation [Needed to run most of the other scripts]
+
+### Chapter 2
+- [MCMC.R](chapter-2/MCMC.R): script to run the Gibbs sampling simulations and check convergence, as in Figure 2.10    
+- [modelNormal.R](chapter-2/modelNormal.R): script to run the analysis of the Normal model (pages 69-73)    
+- [modelNormal.txt](chapter-2/modelNormal.txt): `JAGS` code for the Bayesian model (pages 69-73)    
+- [phbirths.dta](chapter-2/phbirths.dta): Dataset used for the Normal model example - courtesy of [German Rodriguez](http://data.princeton.edu/wws509/datasets/#births)     
+
+### Chapter 3
+- [HEexample.R](chapter-3/HEexample.R): script to run the Bayesian model to analyse the health economic problem described in the chapter (chemotherapy) and the several cost-effectiveness analyses presented throughout the chapter. This example is used throughout chapter 4 as well    
+- [model.txt](chapter-3/model.txt): `JAGS` code for the basic cost-effectiveness analysis    
+- [modelEVPPI_rho.txt](chapter-3/modelEVPPI_rho.txt): `JAGS` code for the analysis of the Expected Value of Partial Perfect Information (EVPPI) for the parameter $\rho$    
+- [modelEVPPI_gamma.txt](chapter-3/modelEVPPI_gamma.txt): `JAGS` code for the analysis of the Expected Value of Partial Perfect Information (EVPPI) for the parameter $\gamma$     
+
+### Chapter 4
+- [modelNormal.R](chapter-4/modelNormal.R): script to run the analysis of the Normal model (pages 129-141); continues the analysis from chapter 2    
+- [modelNormalBlocking.txt](chapter-4/modelNormalBlocking.txt): `JAGS` code to run the model using blocking to improve convergence (page 133)     
+- [modelNormal2.txt](chapter-4/modelNormal2.txt): `JAGS` code to run the compute the predictive distribution (page 135)     
+
+### Chapter 5
+#### **Example 1**: _RCT of acupuncture for chronic headache in primary care_
+- [acupuncture.R](chapter-5/acupuncture.R): script to run the cost-effectiveness analysis of acupuncture. Based on [this](http://www.ncbi.nlm.nih.gov/pubmed/15023830) paper     
+- [dataRCTacupuncture.csv](chapter-5/dataRCTacupuncture.csv): Dataset used for the acupuncture example - courtesy of David Wonderling, Richard Nixon and Richard Grieve     
+- [actptRCT.txt](chapter-5/actptRCT.txt): `JAGS` code to run the normal/normal (on the logit/log scale) model    
+- [actptRCT_gamma.txt](chapter-5/actptRCT_gamma.txt): `JAGS` code to run the normal/gamma (on the logit/natural scale) model     
+- [actptRCT_logN.txt](chapter-5/actptRCT_logN.txt): `JAGS` code to run the normal/log-normal (on the logit/natural scale) model
+
+#### **Example 2**: _Neuraminidase inhibitors to reduce influenza in healthy adults_
+- [EvSynth.R](chapter-5/EvSynth.R): script to run the cost-effectiveness analysis based on evidence synthesis for the influenza treatment with neuraminidase     
+- [EvSynth.txt](chapter-5/EvSynth.txt): `JAGS` code to run the evidence synthesis model     
+- Example 3: _Markov model for the treatment of asthma_     
+- [MarkovModel.R](chapter-5/MarkovModel.R): script to run the cost-effectiveness analysis for the treatment of asthma     
+- [MarkovModel.txt](chapter-5/MarkovModel.txt): `JAGS` code to run the conjugated Markov model
+
+__NB__: Everything works fine on my computer, *originally* configured with Linux, `R 2.15.1` and `JAGS 3.2.0`. But if you experience problems with any of the code, drop me an [email](mailto:g.baio@ucl.ac.uk) and I'll fix it.
+<br><br>
