@@ -1,0 +1,40 @@
+---
+date: 2019-12-31T22:16:14-05:00
+title: "Bayesian Tree-Based Learners for Individualized Treatment Effects Estimation"
+author: 
+  - name: Gianluca Baio
+    orcid: 
+    affiliation: UCL
+  - name: Alberto Caron
+    affiliation: UCL
+    url: https://sites.google.com/view/albertocaron
+  - name: Ioanna Manolopoulou
+    affiliation: UCL
+    url: http://www.homepages.ucl.ac.uk/~ucakima/
+image: featured.jpg
+weight: 8
+categories: ["Causal inference","PhD project"]
+external_link: ""
+toc: false
+page-layout: full
+project: trees
+---
+
+## Introduction
+
+Randomized Clinical Trials (RCTs) are very expensive and cumbersome programs that usually present the downside of having small samples at disposal for the estimation of average treatment effect (ATE), thus preventing researchers from drawing any conclusion about treatment effect at an individual level, known in the literature as Individualized Treatment Effect (ITE) or Conditional Average Treatment Effect (CATE).
+Data from observational studies, compared to RCTs ones, are more easily accessible (thanks to the rise of Electronic Health Records) and most recent statistical learning tools can leverage their high-dimensionality to effectively estimate and predict ITE. Of course, on the other hand, observational data come also at a cost, which is mainly due to the presence of bias in the selection into treatment mechanism.
+Among the widespread methods that can leverage high-dimensional data, borrowed from the machine learning literature, Tree-Based learners are quite popular for ITE estimation, after due modifications to adapt to a causal inference problem rather than a purely predictive one. Among these Tree-Based methods, recent applications for ITE estimation include T-Random Forest, S-Random Forest (and also their Gradient Boosting equivalents) and Causal Forest, as frequentist contributions. Noteworthy Bayesian contributions instead include Bayesian Additive Regression Trees (BART) and Bayesian Causal Forest (BCF).
+Our work currently aims at expanding the Bayesian Causal Forest framework by: 
+
+- Introducing the concept of sparsity in high-dimensional settings where selection into treatment is a sparse process (and potentially Treatment Effect is sparse too)    
+- Developing an extension which allows to model Binary type of outcomes    
+- Developing a bivariate framework that could model correlated Binary outcomes
+
+<br><br>
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```
+

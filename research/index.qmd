@@ -1,0 +1,17 @@
+---
+title: "Current and recent research"
+subtitle: "I lead the research group [Statistics for Health Economic Evaluation](https://egon.stats.ucl.ac.uk/research/statistics-health-economics/) at UCL and my research is a blend of methodological and applied work. My main areas of interests are statistical modelling for health economic evaluation, causal inference from non-experimental data and Bayesian modelling in general."
+listing:
+  contents: .
+  type: grid
+  date-format: "D MMMM, YYYY"
+  categories: true
+  sort: "weight asc"
+  sort-ui: false
+  filter-ui: true
+  fields: [title,image,author,subtitle]
+  page-size: 20
+page-layout: full
+pagetitle: "{{< meta title >}}"
+title-block-banner: false
+---

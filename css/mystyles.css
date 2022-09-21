@@ -161,3 +161,8 @@ div.callout-wink.callout-style-default {
  border-radius: 15px;
  border-color:#287EC7;
 }
+
+/* Resizes the width of the search panes in the DT list of publications */
+div.dtsp-searchPanes {
+   width: 50%!important;
+}

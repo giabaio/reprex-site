@@ -2,12 +2,16 @@ project:
   type: website
   resources: 
      - "*.mp3"
+     - "slides/*"
+     - "slides/**/**/*"
   render: 
      - "*.qmd"
      - "*.Rmd"
      - "*.pdf"
      - "!talks/info.qmd"
-
+     - "!research/refs.qmd"
+     - "!publications/pubs.qmd"
+     
 website:
   title: "Gianluca Baio's webpage"
   site-url: "https://gianluca.statistica.it"
@@ -26,10 +30,53 @@ website:
         href: https://github.com/giabaio
   navbar:
     logo: "media/img/logo.png"
-    title: false
+    title: false 
     right:
-      - text: Talks
+      - href: blog/index.qmd
+        text: "Blog"
+      - href: research/index.qmd
+        text: "Research"
+      - text: "Publications"
+        href: publications/index.qmd
+      - text: "Talks"
         href: talks/index.qmd
+      - text: "Books"
+        menu:
+          - text: "BMHE"
+            href: book/bmhe/index.qmd
+          - text: "BCEA book"
+            href: book/bcea/index.qmd
+          - text: "BMPR"
+            href: book/bmpr/index.qmd
+
+# This doesn't really do much: for most pages, it just removes the left-sidebar (which is nice as it makes the page bigger...)
+  sidebar: 
+# This is supposed to *do* something --- create a sidebar for the book/** pages, but it doesn't seem to work...
+     - id: books
+       title: "Books"
+       collapse-level: 2
+       style: "docked"
+       align: left
+       contents:
+         - section: "BMHE" 
+           href: book/bmhe/index.qmd
+           contents:
+             - href: book/bmhe/code/index.qmd
+             - href: book/bmhe/errata.qmd 
+         - section: "BCEA book"
+           href: book/bcea/index.qmd
+           contents:
+             - href: book/bcea/code/index.qmd 
+             - href: book/bcea/errata.qmd
+
+     - id: research
+       title: "Research"
+       contents:
+         - text: "Eurovision"
+           href: research/eurovision/index.Rmd
+         - text: "Value of information"
+           href: research/voi/index.Rmd
+
 
 format:
   html:
@@ -38,3 +85,6 @@ format:
     toc: true
     page-layout: custom
     fontsize: 1.0em
+    header-includes: |
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">

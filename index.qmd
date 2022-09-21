@@ -1,7 +1,3 @@
----
-###page-layout: custom
----
-
 ::::: {.grid}
 ::: {.g-col-12 .g-col-md-3}
 ### 

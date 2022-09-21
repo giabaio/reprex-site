@@ -1,0 +1,32 @@
+---
+date: 2018-02-10T22:16:14-05:00
+title: " Advancing Psychiatric Mapping Translated into Innovations for Care: PsyMaptic-A"
+author: 
+  - name: Gianluca Baio
+    orcid: 
+    affiliation: UCL
+  - name: James Kirkbride
+    affiliation: UCL
+    url: https://iris.ucl.ac.uk/iris/browse/profile?upi=JBKIR68
+  - name: Christina Ding
+    affiliation: then UCL
+image_preview: ""
+categories: ["Miscellanea","Hierarchical models"]
+external_link: ""
+page-layout: full
+toc: false
+project: psymaptica
+subtitle: |
+   [{{< fa brands firefox title="Psymaptic A website" >}}](http://www.psymaptic.org/front-page/psymaptic-a/) 
+---
+
+## Introduction
+This project has been funded by the [Wellcome Trust](https://wellcome.ac.uk/), with the aim to develop _**[PsyMaptic](http://www.psymaptic.org/)**_, a free online prediction tool for healthcare planners, commissioners and other key stakeholders who require accurate and reliable data on the expected incidence (new, clinically-relevant cases per year) of psychotic disorder in England & Wales. The tool gives instant access to the expected incidence of psychotic disorder in different regions of England & Wales, based on their sociodemographic and socioeconomic profile.
+
+Our work implements a newer version of the underlying risk prediction and disease mapping model. We work under a full Bayesian approach, where information available from sources external to our main dataset is used to anchor the predictions and provide better estimates of the likely incidence rates for psychotic disorder, at the level of electoral wards. We are working to develop suitable Bayesian models based on Integrated Nested Laplace Approximation ([INLA](http://www.r-inla.org)) to deal with the complex model structure and rich geographical resolution of the underlying data.
+<br><br>
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```

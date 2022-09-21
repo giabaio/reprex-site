@@ -1,0 +1,247 @@
+---
+header-includes: |
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet"/>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+
+current_project=rmarkdown::metadata$project
+
+# Code to define the buttons
+button_fa=function(x,icon,txt) { 
+  htmltools::HTML(paste0('<a class="btn btn-outline-dark btn-sm" href="',x,'" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-',icon,'" role="img" aria-label="',txt,'"></i> ',txt,'</a>'))
+}
+
+button_ai=function(x,icon,txt) { 
+  htmltools::HTML(paste0('<a class="btn btn-outline-dark btn-sm" href="',x,'" target="_blank" rel="noopener noreferrer"><i class="ai ai-',icon,'-square" role="img" aria-label="',txt,'"></i> ',txt,'</a>'))
+}
+
+# Loads all publications from yaml file
+f=yaml::read_yaml(here::here("publications/all_pubs.yaml"))
+
+# Creates a tibble with the relevant fields for easy manipulation
+pubs=lapply(f,function(x) paste(x$authors,collapse=", ")) %>% unlist() %>% stringr::str_replace("admin","<b>G Baio</b>") %>% tibble(authors=.) %>% 
+  bind_cols(lapply(f,function(x) x$title) %>% unlist() %>% tibble(title=.)) %>% 
+  bind_cols(lapply(f,function(x) as.numeric(x$year)) %>% unlist() %>% tibble(year=.)) %>% 
+  bind_cols(lapply(f,function(x) x$publication) %>% unlist() %>% tibble(publication=.)) %>% 
+  bind_cols(lapply(f,function(x) x$publication_types) %>% unlist() %>% tibble(pub_type=.)) %>% 
+  mutate(
+    pub_type_str=case_when(
+      pub_type==0~"Uncategorised",
+      pub_type==1~"Conference paper",
+      pub_type==2~"Journal article",
+      pub_type==3~"Preprint/Working paper",
+      pub_type==4~"Report",
+      pub_type==5~"Book",
+      pub_type==6~"Book section",
+      pub_type==7~"Thesis",
+      pub_type==8~"Patent"
+    )
+  ) %>% 
+  bind_cols(lapply(f,function(x) ifelse(!is.null(x$preprint),x$preprint,"")) %>% unlist() %>% tibble(preprint=.)) %>% 
+  bind_cols(lapply(f,function(x) ifelse(!is.null(x$pub_url),x$pub_url,"")) %>% unlist() %>% tibble(pub_url=.)) %>% 
+  bind_cols(lapply(f,function(x) ifelse(!is.null(x$github),x$github,"")) %>% unlist() %>% tibble(github=.)) %>%
+  bind_cols(lapply(f,function(x) ifelse(!is.null(x$doi),x$doi,"")) %>% unlist() %>% tibble(doi=.)) %>%
+  bind_cols(lapply(f,function(x) ifelse(!is.null(x$project),x$project,"")) %>% unlist() %>% tibble(project=.)) %>%
+  bind_cols(lapply(f,function(x) x$date) %>% unlist() %>% tibble(date=.)) %>% rowwise() %>% 
+  mutate(
+    b_preprint=case_when(
+      preprint!=""~ paste(button_ai(preprint,"arxiv","Arxiv")),
+      TRUE~""
+    ),
+    b_pub_url=case_when(
+      pub_url!=""~paste0('<a class="btn btn-outline-dark btn-sm" href="',pub_url,'" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf" role="img" aria-label="Publication"></i> Publication</a>'),
+      TRUE~""
+    ),
+    b_github=case_when(
+      github!=""~paste(button_fa(github,"github","GitHub repo")),
+      TRUE~""
+    ),
+    b_doi=case_when(
+      doi!=""~paste(button_ai(doi,"doi","DOI")),
+      TRUE~""
+    )
+  ) %>% 
+  bind_cols(lapply(f,function(x) ifelse(!is.null(x$book_website),paste(button_fa(x$book_website,"firefox","Book website")),"")) %>% unlist() %>% tibble(book_website=.)) %>% 
+  arrange(desc(year),desc(date),authors) %>% 
+  mutate(
+    buttons=paste(b_pub_url,b_github,b_preprint,book_website,b_doi),
+    string=case_when(
+      pub_type%in%c(2,0)~paste0(authors,". ","(",year,"). \"",title,"\". <em>",publication,"</em><br>",buttons),
+      pub_type%in%c(3,4)~paste0(authors,". ","(",year,"). \"",title,"\".<br>",buttons),
+      pub_type%in%c(5)~paste0(authors,". ","(",year,"). <em>",title,"</em>.<br>",buttons),
+      pub_type%in%c(6)~paste0(authors,". ","(",year,"). <em>",title,"</em>. In \"",publication,"\".<br>",buttons),
+      TRUE~paste0(authors,". ","(",year,"). \"",title,"\".<br>",buttons)
+    )
+  )
+pubs=pubs %>% filter(project==current_project)
+show=nrow(pubs)>0
+```
+
+```{r eval=show}
+#| echo: false
+#| results: asis
+cat(htmltools::HTML("## Relevant publications\n"))
+
+# If only one paper selected, no need for filters
+if(nrow(pubs)==1) {
+  pubs %>% select(string,year,pub_type_str) %>% 
+  mutate(
+    pub_type_str=as.factor(pub_type_str),
+    year=as.factor(year)
+  ) %>% as.data.frame() %>% 
+  DT::datatable(
+    escape = FALSE, rownames = FALSE,
+    extensions = c("RowGroup",'Select'),
+    selection = 'none',
+    colnames = rep("", ncol(.)),
+    options = list(
+      info = FALSE,
+      paging = FALSE,
+      dom = 'Prtip',
+      language = list(lengthMenu = "_MENU_"),
+      rowGroup=list(dataSrc=c(1)),
+      pageLength = 200,
+      columnDefs = list(
+        list(
+          visible=FALSE,targets=c(1,2)
+        )
+      )
+    )
+  ) 
+} else {
+  pubs %>% select(string,year,pub_type_str) %>% 
+  mutate(
+    pub_type_str=as.factor(pub_type_str),
+    year=as.factor(year)
+  ) %>% as.data.frame() %>% 
+  DT::datatable(
+    class = list(stripe = FALSE),
+    escape = FALSE, rownames = FALSE,
+    extensions = c("RowGroup",'Select','SearchPanes'),
+    selection = 'none',
+    colnames = rep("", ncol(.)),
+    options = list(
+      info = FALSE,
+      paging = FALSE,
+      dom = 'Pfrtip',
+      searchPanes = list(initCollapsed=TRUE),
+      language = list(lengthMenu = "_MENU_"),
+      rowGroup=list(dataSrc=c(1)),
+      pageLength = 200,
+      columnDefs = list(
+        list(
+          visible=FALSE,targets=c(1,2)
+        ),
+        list(
+          searchPanes = list(show = FALSE), targets = 0
+        ),
+        list(
+          searchPanes = list(show=TRUE,header=c("Select Year")),targets=1
+        ),
+        list(
+          searchPanes = list(show=TRUE,header=c("Select Publication type")),targets=2
+        )
+      )
+    )
+  ) 
+}
+```
+
+```{r}
+#| echo: false
+#| eval: false
+#| warning: false
+#| message: false
+#| results: asis
+cat(htmltools::HTML(pubs %>% pull(string)))
+```
+
+
+
+
+```{r}
+#| echo: false
+#| eval: false
+#| warning: false
+#| message: false
+library(tidyverse)
+
+current_project=rmarkdown::metadata$project
+f=yaml::read_yaml("/home/gianluca/Desktop/quarto-site/publications/all_pubs.yaml")
+valid=lapply(f,function(x) (!is.null(x$project) & length(x$project)>0)) |> unlist() |> which(TRUE) |> as.numeric()
+cit=character()
+check_refs=!is.null(current_project)
+show=FALSE
+
+# Code to define the buttons
+button_fa=function(x,icon,txt) { 
+  htmltools::HTML(paste0('<a class="btn btn-outline-dark btn-sm" href="',x,'" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-',icon,'" role="img" aria-label="',txt,'"></i> ',txt,'</a>'))
+}
+
+button_ai=function(x,icon,txt) { 
+  htmltools::HTML(paste0('<a class="btn btn-outline-dark btn-sm" href="',x,'" target="_blank" rel="noopener noreferrer"><i class="ai ai-',icon,'-square" role="img" aria-label="',txt,'"></i> ',txt,'</a>'))
+}
+
+```
+
+```{r,eval=check_refs}
+#| echo: false
+#| eval: false
+buttons=c()
+for (i in 1:length(valid)) {
+  if(f[[valid[i]]]$project==current_project) {
+    if(f[[valid[i]]]$publication_types %in% c("5","6")) {
+      # Books or edited books
+      cit[i]=paste0((f[[valid[i]]]$authors |> paste(collapse=", ")),". (",f[[valid[i]]]$year,"). <em>",f[[valid[i]]]$title,"</em>") |>
+        stringr::str_replace("admin","<b>G Baio</b>")
+    } else if(f[[valid[i]]]$publication_types=="3") {
+      # Preprints
+      cit[i]=paste0((f[[valid[i]]]$authors |> paste(collapse=", ")),". (",f[[valid[i]]]$year,"). ",f[[valid[i]]]$title,". ",f[[valid[i]]]$preprint) |>
+        stringr::str_replace("admin","<b>G Baio</b>")
+    } else {
+      # Other pubs
+      cit[i]=paste0((f[[valid[i]]]$authors |> paste(collapse=", ")),". (",f[[valid[i]]]$year,"). ",f[[valid[i]]]$title,". <em>",f[[valid[i]]]$publication,"</em>") |>
+        stringr::str_replace("admin","<b>G Baio</b>")
+    }
+  }
+  # Now add the icons with links
+  if(!is.null(f[[valid[i]]]$preprint)) {
+    if(nchar(f[[valid[i]]]$preprint)>0) {
+      buttons[i]=paste(buttons[i],button_ai(f[[valid[i]]]$preprint,"arxiv","Arxiv"),collapse="&nbsp;")
+    }  
+  }
+  if(!is.null(f[[valid[i]]]$github)) {
+    if(nchar(f[[valid[i]]]$github>0)) {
+      buttons[i]=paste(buttons[i],button_fa(f[[valid[i]]]$github,"github","GitHub repo"),collapse="&nbsp;")
+    }
+  }
+  if(!is.null(f[[valid[i]]]$pub_url)) {
+    if(nchar(f[[valid[i]]]$pub_url>0)) {
+      buttons[i]=paste(buttons[i],htmltools::HTML(paste0('<a class="btn btn-outline-dark btn-sm" href="',f[[valid[i]]]$pub_url,'" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf" role="img" aria-label="Publication"></i> Publication</a>')),collapse="&nbsp;")
+    }
+  }
+  if(!is.null(f[[valid[i]]]$doi)) {
+    if(nchar(f[[valid[i]]]$doi)>0) {
+      buttons[i]=paste(buttons[i],button_ai(f[[valid[i]]]$doi,"doi","DOI"),collapse="&nbsp;")
+    }  
+  }
+}
+to_keep=which(!is.na(cit))
+buttons[is.na(buttons)]=""
+buttons=buttons |> stringr::str_replace("NA"," ")
+show=length(cit)>0
+```
+
+```{r, eval=show}
+#| echo: false
+#| eval: false
+#| results: asis
+cat(htmltools::HTML("## Relevant publications\n"))
+cat(htmltools::HTML(paste0(cit[to_keep],"    \n",buttons[to_keep],"\n\n")))
+```

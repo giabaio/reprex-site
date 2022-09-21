@@ -1,0 +1,65 @@
+---
+title: "Population adjustment with limited access to patient-level data"
+image: featured.jpg
+date: '2020-03-03T22:16:14-05:00'
+author: 
+  - name: Gianluca Baio
+    orcid: 
+    affiliation: UCL
+  - name: Antonio Remiro-Azocar 
+    affiliation: Bayer (then UCL)
+    url: http://remiroazocar.com/
+  - name: Anna Heath
+    affiliation: Sick Kids Hospital (Toronto)
+    url: https://sites.google.com/site/annaheathstats/
+  - name: Chengyang Gao
+    affiliation: UCL
+categories:
+- Causal inference
+- Health Economics
+- PhD project
+toc: false
+project: population-adjustment
+image_preview: population-adjustment-image
+weight: 6
+page-layout: full
+---
+
+## Introduction
+
+Health technology assessment (HTA) typically takes place late in the drug development process, after a new medical technology has obtained regulatory approval, in which new interventions are typically compared with placebo or standard of care in a randomised controlled trial. In this case, the policy question of interest is whether the drug is effective or not. In HTA, the relevant policy question is: “given that there are finite resources available to finance or reimburse health care, which is the best treatment of all available options in the market?". However, many competing technologies have never been trialled against each other. In the absence of data from head-to-head controlled trials, indirect treatment comparisons are at the top of the hierarchy of evidence when assessing the relative effectiveness of interventions. 
+
+Standard indirect comparisons assume that there are no between-trial differences in the distribution of covariates influencing outcome. If this assumption is broken, the methods are liable to bias and over-precision. In addition, access to individual patient data is often limited, and popular balancing methods such as propensity score matching are unfeasible. In order to overcome these major limitations, several methods, labelled \textit{population-adjusted} indirect comparisons have been proposed. 
+
+The use of population adjustment in HTA, both in published literature as well as in submissions for reimbursement, and its acceptability by national HTA bodies, is rapidly increasing across diverse therapeutic areas, particularly in oncology. Popular methods include matching-adjusted indirect comparison (MAIC) and simulated treatment comparison (STC). While these are well motivated and useful tools, they also have potential shortcomings. As a result, we propose a novel method based on multiple imputation called predictive-adjusted indirect comparison (PAIC).
+
+### Population adjustment methods
+#### With [Antonio Remiro-Azocar](http://remiroazocar.com/) and [Anna Heath](https://sites.google.com/site/annaheathstats/)
+
+Population adjustment methods such as matching-adjusted indirect comparison (MAIC) and simulated treatment comparison (STC) are increasingly used in health technology assessment for indirect treatment comparisons with limited patient-level data. The former is based on propensity score weighting and the latter is based on outcome modelling.
+
+We reviewed these methodologies and performed a large simulation study to evaluate them. We find that typical usage of outcome modelling is biased with "non-collapsible" effect measures because it targets a *conditional* treatment effect, as opposed to a *marginal* treatment effect. Almost invariably, the conditional effect is incompatible in the indirect comparison. This motivates the development of outcome modelling methods that target marginal treatment effects, the preferred target estimands for decision-making at the population level.  
+
+We use the principles of parametric *G-computation*, extending these to a Bayesian framework, to marginalize out the regression-adjusted conditional effects. We develop a novel marginalization method, multiple imputation marginalization (MIM), that is applicable to a wide range of outcome models. In a simulation study, the novel approaches are unbiased when assumptions hold, providing more precise and efficient estimates than MAIC, and lower standard errors than conventional STC. Ongoing research includes adapting the marginalization methods to the context of parametric survival modelling, the formulation of methodological guidelines, the development of non-parametric regression-based population adjustment methods, and the application of novel "transportability" methods in this context. 
+
+<br>
+
+### Extrapolating clinical effectiveness in the presence of treatment effect heterogeneity using multilevel regression with post-stratification 
+#### With Chengyang Gao, [Antonio Remiro-Azocar](http://remiroazocar.com/) and [Anna Heath](https://sites.google.com/site/annaheathstats/)
+
+We propose an integration of methods developed in the context of HTA with procedures to extrapolate clinical effectiveness in the presence of treatment effect heterogeneity using multilevel regression with post-stratification (MRP), a method that has traditionally been applied in survey inference (e.g. to rebalance biased surveys to predict electoral results). It has also been used in epidemiology for 'small cell' inference. In the context of HTA, the trial population could be regarded as a non-probabilistic sample from the target population. Cross-tabulating EMs could construct a poststratification frame, and then a multilevel model could be fit using patient-level data from the clinical trial. Following the common step of MRP, treatment effects could be estimated at a finer granularity.
+
+MRP has yet been applied in HTA. This project aims to explore the feasibility of this setting and a framework for its implementation. Specifically, some foreseeable challenges are:
+
+- Continuous EMs must be discretized to be used in MRP. The level of discretization needs to be explored to enable proper information borrowing while balancing information loss.
+- The sample size of clinical trials is much smaller than the population survey. While EMs are fewer than census variables, lots of cells might still end up empty. In that case, model-fitting and inferences could be problematic.
+- The Bayesian hierarchical model (BHM) is powerful in that it can borrow information across cells. Care needs to be taken in specifying appropriate hyperpriors for the scale parameters so that the degree of information borrowing matches clinical knowledge.
+
+<br><br>
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```
+
+

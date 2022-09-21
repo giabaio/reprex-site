@@ -1,0 +1,86 @@
+---
+date: 2018-03-11T22:16:14-05:00
+title: "Evidence of bias in the Eurovision song contest: modelling the votes using Bayesian hierarchical models"
+subtitle: |
+   [{{< fa brands soundcloud title="UCL Hypot-enthused podcast" >}}](https://soundcloud.com/uclsound/hypot-enthuse-gianluca-baio-on-the-statistics-of-eurovision?in=uclsound/sets/hypot-enthuse) UCL Hypot-enthused podcast
+author: 
+  - name: Gianluca Baio
+    orcid: 
+    affiliation: UCL
+  - name: Marta Blangiardo
+    url: https://www.imperial.ac.uk/people/m.blangiardo
+    affiliation: Imperial College London
+    orcid:
+image_preview: "eurovision.jpg"
+categories: ["Hierarchical models","Miscellanea"]
+external_link: ""
+weight: 1
+page-layout: full
+toc: false
+image: "featured.jpg"
+abstract: ""
+project: eurovision
+#bibliography: ["/home/gianluca/Dropbox/Perso/Office/CV/mypubs.bib"]
+#nocite: |
+#   @BlangiardoBaio:2014, 
+
+---
+
+## Introduction
+The Eurovision Song Contest is an annual musical competition held among active members of the European Broadcasting Union since 1956. The event is televised live across Europe. Each participating country presents a song and receive a vote based on a combination of tele-voting and jury. Over the years, this has led to speculations of tactical voting, discriminating against some participants and thus inducing bias in the final results. Sir Terry Wogan, then the commentator for the BBC, quit from his role because he claimed the contest was ['rubbish'](https://www.theguardian.com/media/2009/may/06/eurovision-terry-wogan-rubbish). 
+
+In this paper we investigate the presence of positive or negative bias (which may roughly indicate favouritisms or discrimination) in the votes based on geographical proximity, migration and cultural characteristics of the participating countries through a Bayesian hierarchical model. Our analysis found no evidence of negative bias, although mild positive bias does seem to emerge systematically, linking voters to performers. 
+
+## Modelling
+The outcome is $y_{vpt}$, the number of points from voter (country) $v$ to performer $p$ on occasion (year) $t$, with $t=1998,\ldots,2012$. We also observe the following covariates: 
+
+- $x_{1t}$: the (centered) year of the contest, to account for contextual, external factors;
+- $x_{2pt}$: the language in which a given song is performed (with English as reference factor);
+- $x_{3pt}$: gender and type of performance (solo, female, male artist).
+
+We use a Bayesian hierarchical model with $y_{vpt} \sim \mbox{Categorical}(\boldsymbol\pi_{vpt})$ and a generalised linear model on the logit scale for the cumulative probabilities $\mu_{vpt} = \mathbf{X}\boldsymbol{\beta} + \alpha_{vp}.$
+The main objective of our inference is the "structured" effects $\alpha_{vp}\sim \mbox{Normal}(\theta_{vp},\sigma^2_\alpha)$, with
+\[ \theta_{vp} = \gamma + \psi w_{vp} + \phi z_{vp}\mathbb{I}(z_{vp}) + \delta_{R_v p}. \]
+Here: 
+
+- $\gamma \sim \mbox{Normal}(0, q^2)$ = overall intercept;
+- $w_{vp} = 1$ if countries $v$ and $p$ share a geographic border and 0 otherwise and so $\psi\sim\mbox{Normal}(0,q^2)$ is a sort of "geographic" effect;
+- $z_{vp}$ = estimate of migration intensity from country $v$ to country $p$ and so $\phi \sim \mbox{Normal}(0, q^2)$ is a sort of "migration" effect;
+- We also assume that voters cluster within $K$ "regions"; membership is estimated from the data through the latent categorical variable $R_v$ and so the resulting coefficients $\delta_{kp}\sim\mbox{Normal}(0,\sigma^2_\delta)$ are a set of structured common residual for each
+combination of macro-area and $p$, which describe the "cultural" effect.
+
+For voters $v_1$ and $v_2$ and performer $p$, $\alpha_{v_1p}$ and $\alpha_{v_2p}$ determine the voting patterns, all other covariates being equal. We can rescale them to compute $\displaystyle\alpha^*_{vp} = \frac{\alpha_{vp}-\bar{\alpha}}{s_\alpha}\approx \mbox{Normal}(0,1)$ and then if $\alpha^*_{vp}>1.96$, we have "substantial" evidence of positive bias from $v$ to $p$, while for $\alpha^*_{vp}$ we can infer "substantial" negative bias. All in all, there is no evidence of "negative bias", although there is some weak evidence of clustering of countries that systematically tend to score a performer highly (e.g. the Scandinavian countries, or some former Soviet countries towards Russia --- although this is not uniform!). In addition, the "positive bias" has a relatively small magnitude and thus not likely to determine the outcome of the competition --- more details on the results in Blangiardo and Baio (2014). Incidentally, the red dots in the graph below quantify the probability of negative bias in the the voter-performer combinations in which the United Kingdom is the performer.  
+```{r make plots,comment=NA,echo=FALSE,fig.align='center',error=FALSE, fig.width=8,fig.height=8,warning=FALSE,out.width='35%'}
+#load("/home/gianluca/Dropbox/UCL/Projects/Dee/Data/AnalysisBUGS/Final/WBSims.RData")
+load("/home/gianluca/Dropbox/UCL/Projects/Dee/Data/AnalysisBUGS/4groups/WBSims4groups.RData")
+#alpha <- rbind(mcmc1[,substr(colnames(mcmc1),1,5)=="alpha"],
+#               mcmc2[,substr(colnames(mcmc2),1,5)=="alpha"])
+alpha.std <- (alpha-mean(alpha))/sd(c(alpha))
+test.neg <- test.pos <- numeric(); 
+for (j in 1:ncol(alpha)) { 
+	test.neg[j] <- sum(alpha.std[,j]< -1.96)/nrow(alpha)		# test statistic to check the probability of negative bias
+	test.pos[j] <- sum(alpha.std[,j]> 1.96)/nrow(alpha)		# test statistic to check the probability of positive bias
+}
+plot(-test.neg,pch=1,cex=.65,ylim=c(-1,1),xlab="Voter-Performer combination",ylab="",axes=F,col="black")
+points(test.pos,pch=19,cex=.65,col="black")
+axis(1)
+axis(2,at=c(-1,-.5,0,.5,1),labels=c("1","0.5","0","0.5","1"))
+mtext("Probability of ''positive bias''",side=2,at=.5,outer=F,line=2.5,cex=.8)
+mtext("Probability of ''negative bias''",side=2,at=-.5,outer=F,line=2.5,cex=.8)
+abline(h=0,lwd=2)
+points(which(Combinations.table[,3]=="UnitedKingdom"),-test.neg[which(Combinations.table[,3]=="UnitedKingdom")],col="red",cex=.75,pch=20)
+#points(which(Combinations.table[,3]=="UnitedKingdom"),test.pos[which(Combinations.table[,3]=="UnitedKingdom")],col="red",cex=.65,pch=19)
+#text(which(test.pos>.8),test.pos[which(test.pos>.8)],paste0(Combinations.table[which(test.pos>.8),2],"-",Combinations.table[which(test.pos>.8),3]),cex=.5,pos=3)
+
+#library(ggplot2)
+#thresh=.95
+#ctab=table(Combinations.table[which(test.pos>thresh),2],Combinations.table[which(test.pos>thresh),3])
+#ggplot(data = data.frame(ctab), aes(x = data.frame(ctab)[,2], y = data.frame(ctab)[,1])) +geom_tile(aes(fill=data.frame(ctab)[,3]))
+```
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```
+

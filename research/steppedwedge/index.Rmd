@@ -1,0 +1,41 @@
+---
+date: 2018-03-04T22:16:14-05:00
+title: "Design and sample size calculations for trials based on the stepped wedge design"
+author: 
+  - name: Gianluca Baio
+    orcid: 
+    affiliation: UCL
+  - name: Rumana Omar
+    affiliation: UCL
+    url: https://www.ucl.ac.uk/statistics/people/rumanaomar
+  - name: Gareth Ambler
+    affiliation: UCL
+    url: http://www.ucl.ac.uk/statistics/people/garethambler
+  - name: Andrew Copas
+    url: https://iris.ucl.ac.uk/iris/browse/profile?upi=AJCOP98
+    affiliation: UCL
+image: featured.jpg
+categories: ["Miscellanea"]
+weight: 7
+page-layout: full
+project: steppedwedge
+toc: false
+subtitle: |
+   [{{< fa brands github title="Code" >}}](https://github.com/giabaio/SWSamp) &nbsp; [{{< fa brands firefox title="Project page" >}}](../../software/swsamp/index.qmd)
+
+---
+
+## Introduction
+This work has been funded through an [NIHR Research Methods fellowship](https://www.nihr.ac.uk/funding-and-support/funding-for-training-and-career-development/training-programmes/research-methods-programme/research-methods-fellowship-and-internships/) that I have been awarded in 2014. The aim of the project was to develop methodological work in the area of clinical trials, specifically with reference to the stepped wedge design, an increasingly popular quasi-experimental set up in which an intervention is implemented in a number of centers (or clusters) on a rolling basis, with centers sequentially switching to the active intervention at different time points. 
+
+This work has been conducted in collaboration with colleagues at UCL and the London School of Hygiene and Tropical Medicine and has led to the publication of several research articles in [Trials](https://trialsjournal.biomedcentral.com/). I have also developed an R package (called [SWSamp](https://gianluca.statistica.it/software/swsamp/)) to perform sample size calculations for this specific design, based on a simulation approach. This has been used as the basis for the chapter on cluster randomised trials in the forthcoming fourth edition of the influential book [Sample Sizes for Clinical, Laboratory and Epidemiology Studies ](https://www.amazon.co.uk/Sample-Clinical-Laboratory-Epidemiology-Studies/dp/1118874943/ref=dp_ob_title_bk), by Prof David Machin and colleagues.
+
+The main advantage of using a simulation-based approach to sample size calculations is that the _design_ and the _analysis_ model can be aligned --- the same complexity that eventually characterises the data analysis once the study has been conducted can be embedded in the model used to perform the sample size calculations. In addition, using simulations it is possible to account more appropriately of features such as the impact of missing data.
+
+Some discussion of this project is also on the blog, for example [here](https://gianluca.statistica.it/post/2015-07-27-launch-party/) and [here](https://gianluca.statistica.it/post/2015-11-07-more-on-stepped-wedge).
+<br><br>
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```

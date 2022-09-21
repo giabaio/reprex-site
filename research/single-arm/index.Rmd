@@ -1,0 +1,41 @@
+---
+date: 2018-01-10T22:16:14-05:00
+title: "A modelling framework for estimation of benefit using single arm clinical trials"
+author: 
+  - name: Gianluca Baio
+    orcid: 
+    affiliation: UCL
+  - name: Anthony Hatswell
+    affiliation: Delta Hat and UCL
+    url: http://deltahat.co.uk/
+  - name: Nick Freemantle
+    url: http://www.ucl.ac.uk/cctu/meet-the-team/people/nickfreemantle
+    affiliation: UCL
+image: featured.jpg
+categories: ["Health Economics","Hierarchical models","PhD project"]
+external_link: ""
+toc: false
+project: single-arm
+page-layout: full
+#bibliography: ["/home/gianluca/Dropbox/Perso/Office/CV/mypubs.bib"]
+#nocite: |
+#   @Hatswelletal:2015, @Hatswelletal:2016, @Hatswelletal2:2016 @Hatswelletal:2019
+
+---
+
+## Introduction
+New pharmaceutical interventions are usually evaluated for regulatory purposes in randomised controlled trials which, when properly designed and conducted, provide unbiased estimates of treatment effect. However, occasionally therapies are studied in clinical programmes in which all patients receive the investigational medicinal product. 
+
+These non-randomised, uncontrolled trials tend to be used in areas where withholding drugs in a control group is considered unethical.  Recent examples include the use of investigational treatments for Ebola. 
+
+In this project, we firstly aim to identify treatments granted a marketing authorisation on the basis of single arm trial data. Secondly we aim at identifying the methods used in economic modelling for these treatments and finally to assess the appropriateness of the methods. Subsequent work will involve the use of experimental methods to construct appropriate health economic comparisons. These involve the use of historical evidence to inform future decisions.
+
+The initial work for this project, identifying products licensed on the basis of uncontrolled clinical studies, was published in the [BMJ Open](http://bmjopen.bmj.com/content/6/6/e011666.full). The systematic reviews to identify modelling methods used in these clinical studies and along with the methods to arrange them in to a taxonomy was published in [Pharmacoeconomics](https://www.ucl.ac.uk/statistics/research/statistics-health-economics/current-projects/%20%20%20http_/link.springer.com/article/10.1007/s40273-016-0460-6).
+
+The next stages of the work will involve the testing of existing methods via simulation studies, and the creation of new methods (for example the use of Bayesian regression), with various abstracts and manuscripts accepted for presentation and/or under preparation.
+<br><br>
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```

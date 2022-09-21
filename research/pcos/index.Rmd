@@ -1,0 +1,40 @@
+---
+date: 2018-01-09T22:16:14-05:00
+title: "Incidence, prevalence and burden of the disease of Polycystic Ovary Syndrome (PCOS)"
+author: 
+  - name: Gianluca Baio
+    orcid: 
+    affiliation: UCL
+  - name: Christina Ding
+    affiliation: then UCL
+  - name: Irene Petersen
+    affiliation: UCL
+    url: https://iris.ucl.ac.uk/iris/browse/profile?upi=IPETE57
+  - name: Paul Hardiman
+    affiliation: UCL
+    url: https://iris.ucl.ac.uk/iris/browse/profile?upi=PHARD26
+image_preview: ""
+tags: ["health-economics","hierarchical-models","phd-project"]
+external_link: ""
+toc: false
+project: pcos
+page-layout: full
+#bibliography: ["/home/gianluca/Dropbox/Perso/Office/CV/mypubs.bib"]
+#nocite: |
+#   @Dingetal:2016, @Dingtal2016b, @Dingetal:2017, @Quetal2017, @Dingetal:2018
+
+---
+
+## Introduction
+Polycystic ovary syndrome (PCOS) has been recognized as one of the most common endocrine abnormalities, affecting millions of women worldwide. As PCOS is closely related to a range of metabolic, reproductive and dermatological disorders, the healthcare-related economic burden of this syndrome is potentially significant for public providers, such as the NHS, in the UK. 
+
+The aim of this research is to firstly estimate and compare the prevalence of PCOS among distinct ethnic groups and according to different diagnostic criteria. Our prevalence estimation is based on Bayesian hierarchical modeling and model averaging using data in prevalence studies found in literature review. We will also extract patient information from a database, THIN, which contains primary care electronic medical records covering over 6% of the whole UK population. We aim at comparing the results obtained from both methods and then establish the prevalence of PCOS in the reference population (UK). 
+
+A further objective of this project is to investigate the epidemiology of common PCOS-related diseases (i.e. type 2 diabetes mellitus, coronary heart disease, and infertility) in the PCOS population. This step is completed by meta-regression and adding some further modules in our previous model. In addition, we will evaluate common treatments of various PCOS-related diseases and their associated costs so the financial burden that PCOS population represents. As a last step, we will use cost-effective analysis to compare current and potential alternative treatments for PCOS so the optimal clinical decisions can be established to improve the welfare of PCOS patients. 
+<br><br>
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```
+

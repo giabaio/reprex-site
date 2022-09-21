@@ -1,0 +1,86 @@
+---
+date: 2018-03-10T22:16:14-05:00
+title: "Bayesian computations for Value of Information measures using Gaussian processes, INLA and Moment Matching"
+subtitle: |
+   [{{< fa brands github title="GitHub code" >}}](https://github.com/giabaio/EVSI) &nbsp; [{{< fa brands firefox title="ConVOI website" >}}](http://www.convoi-group.org/) &nbsp; [{{< fa brands twitter title="Follow ConVOI on Twitter" >}}](https://twitter.com/ConVOIgroup) 
+summary: ""
+categories: ["Health Economics","Hierarchical models","PhD project"]
+page-layout: full
+toc: false
+image: "featured.jpg"
+author: 
+  - name: Gianluca Baio
+    orcid: 
+    affiliation: UCL
+  - name: Anna Heath
+    url: https://sites.google.com/site/annaheathstats/
+    affiliation: Sick Kids Hospital (Toronto)
+    orcid: 
+  - name: Ioanna Manolopoulou
+    url: http://www.homepages.ucl.ac.uk/~ucakima/
+    affiliation: UCL
+    orcid: 
+weight: 2
+project: "voi"
+bibliography: "/home/gianluca/Dropbox/Perso/Office/CV/mypubs.bib"
+nocite: |
+   @Heathetal:2016,@Heathetal:2019,@Heathetal:2017
+suppress-bibliography: true 
+---
+
+## Introduction
+Understanding the impact of uncertainty on decision is an important aspect of health-economic decision making. While health-economic decision are typically made in a decision theoretic context, which quantifies the "best" decision under current evidence, the approval of a new health-care technology often comes with some risk. Therefore, funding bodies are often concerned with the impact of the parameter uncertainty on the optimal decision.
+
+The analysis of the Value of Information (VoI) is an increasingly popular method for quantifying the decision uncertainty. However, despite being a theoretically valid measure of decision uncertainty, its practical use has been limited by the immense computational power required to calculate typical VoI summaries, such as Expected Value of Partial Perfect Information (EVPPI) and the Expected Value of Sample Information (EVSI).
+
+For the EVPPI, recent developments using Bayesian non-parametric regression have vastly improved the computational time required but when larger subsets are considered the computational time is still prohibitive. To begin, this research focused on reducing the computation time for the EVPPI still further so that VoI measures can be used in standard Health Economic evaluations.
+
+INLA is an algorithm for fast approximate Bayesian inference that quickly approximates the marginal posteriors for a wide class of models. As part of this project, we worked on adapting the method of approximating the EVPPI such that INLA can be used to fit the Bayesian non-parametric regression.
+
+For the EVSI, a method based on moment matching has been developed to reduce the computational time required produce an estimate. This method is based on the Bayesian interpretation of the EVSI measure and the research project will continue by considering way to extend this methodology so the EVSI can be used to find optimal trial designs. Part of this research has been devoted to developing a [web-application](https://egon.stats.ucl.ac.uk/projects/EVSI/) including graphical tools to visualise and analyse the EVSI.
+<br><br>
+
+## EVPPI with Gaussian Processes and INLA [@Heathetal:2016]
+The Expected Value of Partial (Perfect) Information (EVPPI) is a measure of the _Value of Information_ associated with gathering evidence that can reduce uncertainty about a set of parameters of interest in a health economic model. 
+
+Typically, we can split the vector of model parameters $\boldsymbol\theta$ into two components, $\boldsymbol\phi$ (the parameters we are interest in, which we may gather more information about) and $\boldsymbol\psi$, the set of "nuisance" parameters. The monetary value (utility) of a given intervention $t$ is quantified by the _(monetary) Net Benefit_, $\mbox{NB}_t(\boldsymbol\theta)=\mbox{NB}_t(\boldsymbol\phi,\boldsymbol\psi)$. The EVPPI is the difference between the expected maximum utility (NB) **_if_** we were able to learn the value of the important parameters $\boldsymbol\phi$ perfectly and the maximum expected utility calculated under current uncertainty:
+$$ \mbox{EVPPI} = \mbox{E}_{\boldsymbol\phi}\left[ \max_t \mbox{E}_{\boldsymbol\psi\mid\boldsymbol\phi} \left[ \mbox{NB}_t({\boldsymbol\phi},\boldsymbol\psi) \right] \right] - \max_t \mbox{E}_\boldsymbol\theta \left[ \mbox{NB}_t(\boldsymbol\phi,\boldsymbol\psi) \right]. $$
+Computationally, the EVPPI is hard because it involves the maximisation of an expectation calculated with respect to a conditional distribution. Thus, unless simplifying assumptions hold (which usually don't), it can involve a hard and lengthy computation, particularly when the size of the vector $\boldsymbol\phi$ is large.
+
+We've built on the existing literature to combine a framework based on Gaussian Process Regression to estimate $\mbox{E}_{\boldsymbol\psi\mid\boldsymbol\phi} \left[ \mbox{NB}_t({\boldsymbol\phi},\boldsymbol\psi) \right]$ and Integrated Nested Laplace Approximation (INLA), a very fast method for Bayesian computation. This generates accurate estimates with substantial computational savings [@Heathetal:2017;@Heathetal:2016].
+<br><br>
+
+
+## EVSI with the Moment Matching method [@Heathetal:2019]
+Generally speaking and assuming that the utility associated with the application of a given intervention is represented by the monetary net benefit $\mbox{NB}(\boldsymbol{\theta})_t=k\mbox{E}[e\mid\boldsymbol{\theta};t] - \mbox{E}[c\mid\boldsymbol{\theta};t]$, the _Expected Value of Sample Information_ is computed as
+$$\mbox{EVSI} = \mbox{E}_{\mathbf{X}} \left[ \max_t\ \underbrace{\mbox{E}_{\boldsymbol\theta \mid \mathbf{X}} \left[ \mbox{NB}_t(\boldsymbol\theta) \right]}_\text{Value of decision based on sample information (for a given study design)}\right] - \underbrace{\max_{t}\mbox{E}_{\boldsymbol\theta}\left[\mbox{NB}_{t}(\boldsymbol\theta)\right]}_\text{Value of decision based on currentinformation}$$ 
+
+The EVSI measures the value of reducing uncertainty by running a study of a given design and can be used to compare the benefits and costs of a study with given design, thus helping in both assessment of the impact of parameters uncertainty on the decision-making process and research prioritisation.
+
+Assuming we are only interested in a pairwise comparison (eg the new intervention vs the standard of care), the EVSI can be re-expressed as
+$$\mbox{EVSI} = \mbox{E}_{\mathbf{X}}\left[\max\left\{0,\mbox{E}_{\boldsymbol\theta\mid\mathbf{X}}[\mbox{INB}(\boldsymbol\theta)]\right\} \right] - \max\left\{0, \mbox{E}_{\boldsymbol\theta}\left[\mbox{INB}(\boldsymbol\theta)\right]\right\}.$$
+
+In practical terms, the inner expectation $\mu^{\mathbf{X}}=\mbox{E}_{\boldsymbol\theta\mid\mathbf{X}}[\mbox{INB}(\boldsymbol\theta)]$ is the complicated part to estimate. The ``standard'' option is to use nested Monte Carlo integration, but this requires a __very__ large number of simulations and thus is impractical.
+
+In effect, the objective is to approximate the distribution $p(\mu^{\mathbf{X}})$ using the $S$ simulations available from the process of probabilistic sensitivity analysis (PSA, which is mandatory in many jurisdictions). The approximation is made by matching the first two moments of the distribution
+
+- $\mbox{E}_{\mathbf{X}}\left[\mu^{\mathbf{X}}\right] = \mbox{E}_{\mathbf{X}}\left[ \mbox{E}_{\boldsymbol\theta\mid\mathbf{X}} \left[\mbox{INB}(\boldsymbol\theta)\right] \right] = \mbox{E}_{\boldsymbol\theta}\left[\mbox{INB}(\boldsymbol\theta)\right]$
+
+- $\mbox{Var}_{\mathbf{X}}\left[\mu^{\mathbf{X}}\right] = \mbox{Var}_{\boldsymbol\theta}\left[\mbox{INB}(\boldsymbol\theta)\right] - \mbox{E}_{\mathbf{X}}\left[\mbox{Var}_{\boldsymbol\theta\mid\mathbf{X}}\left[\mbox{INB}(\boldsymbol\theta)\right]\right]$
+
+In particular, the variance $\mbox{Var}_{\mathbf{X}}\left[\mu^{\mathbf{X}}\right]$ can be efficiently estimated using only a limited number $30<Q<50$ of simulations from the posterior distribution of the parameters given the "hypothetical" data $\mathbf{X}$. Subsequently the original PSA samples for the INB can be rescaled and used to approximate the EVSI as
+$$\mbox{EVSI} = \frac{1}{S}\sum_{s=1}^S \max\left\{ 0,\eta^{\mathbf{X}}_s \right\} - \max\left\{0, \mu \right\},$$
+where $\eta^{\mathbf{X}}_s$ is the $s-$th simulated rescaled value from the PSA samples of INB$(\boldsymbol\theta)$ and $\mu$ is the mean of these PSA samples. 
+
+<!-- 
+![](/img/Moment_matching1.png)
+-->
+
+### Computational tools
+The moment matching method is implemented in the <tt>R</tt> package [EVSI](https://github.com/giabaio/EVSI), which is also available as a web-application [here](https://egon.stats.ucl.ac.uk/projects/EVSI/).
+
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```

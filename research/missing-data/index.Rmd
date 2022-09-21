@@ -1,0 +1,67 @@
+---
+date: 2018-03-10T22:16:14-05:00
+title: "Full Bayesian methods to handle missing data in health economic evaluations"
+subtitle: |
+   GitHub repo: [{{< fa brands github title="Code" color="myblue" >}}](https://github.com/giabaio/missingHE)
+author:
+  - name: Gianluca Baio
+    orcid: 0000-0000-0000
+    affiliation: UCL
+  - name: Andrea Gabrio
+    url: https://sites.google.com/site/agabriostats
+    affiliation: University of Maastricht
+    orcid: 
+  - name: Alexina Mason
+    url: https://www.lshtm.ac.uk/aboutus/people/mason.alexina
+    affiliation: London School of Hygiene and Tropical Medicine
+    orcid: 
+  - name: Xiaoxiao Ling
+    affiliation: UCL
+summary: ""
+image_preview: "imputation.jpeg"
+image: "featured.jpg"
+categories: ["Health Economics","Hierarchical models","PhD project"]
+page-layout: full
+project: missing-data
+toc: false
+weight: 3
+
+#bibliography: ["/home/gianluca/Dropbox/Perso/Office/CV/mypubs.bib"]
+#nocite: |
+#   @Gabrioetal:2016, @Gabrioetal:2017, @Gabrioetal:2018, @Gabrioetal2:2018, @Gabrioetal:2018b
+
+---
+
+## Introduction
+Bayesian approach to health economic analysis has been characterised by an increasing attention in recent years in medical research. The reason behind this wide adoption is related to the suitability of full Bayesian methods to deal with critical issues that may affect the validity of statistical inference in health economic evaluations. More specifically, a serious concern is that individual-level datasets generally show a relevant proportion of missing data (over 25%) that must be taken into account through correct imputation methods. This is particularly important for the modeling of data on cost-effectiveness analyses that typically show very complex dependence structures between measures of clinical benefit (e.g. Quality-Adjusted Life Years) and the costs associated to the specific medical intervention considered.
+
+## Statistical and economic perspective
+Standard imputation methods are mainly based on the assumptions of missing at random (MAR) and ignorability of the missing data mechanism, which in many cases are quite strong assumptions that typically fail to hold in more complex frameworks where the missingness mechanism must be explicitly specified. The problem is related to the fact that the missing data pattern depends on the way data are collected (e.g. via questionnaires) which in turn may imply a different correlation structure among costs, benefits and both types of measures. Moreover, it is necessary to provide posterior checks to validate assumptions made on the distribution of missingness indicators through sensitivity analysis. This can be used to assess the impact of different assumptions about the missing data mechanism on final economic evaluations.
+
+The failure to correctly specify the uncertainty related to the existence of a specific missing data mechanism might have important consequences for decision analyses carried out by health care system bodies like the National Institute for Health and Care evaluation (NICE). In particular, if missing data are not correctly handled in the cost-effectiveness analysis, when performing the economic evaluation, an intervention may be incorrectly considered as cost-effective with respect to a comparator. This would lead to the potential reimbursement of the intervention by the public health care provider (e.g. NHS) that could reverse, or significantly affect, the decision of allocating resources under correct consideration of missing data.
+
+## Bayesian analysis
+The application of Bayesian methods to deal with the problem of missing data is particularly suitable for making inference on joint multivariate outcomes, typical in health economic analyses. Indeed, we need to make assumptions about the distribution of missing data that cannot be verified using the data. The Bayesian approach allows to formalize these assumptions in terms of prior distributions for parameters indexing conditional distribution of missing data given observed data. This allows us to write down a model enabling critical thinking about missing data assumptions and at the same time handling a complex dependence structure between costs and benefits.
+
+This aim is achieved through the estimation of three linked models:
+
+- Model for the missingness mechanisms, indexed by some parameters
+- Model for the outcomes, linked to the first one by assuming some functional relationships where incomplete data are related to parameters of missingness indicator distribution for both cost and benefit models. In addition, also the joint dependence between cost and benefit is taken into account by linking models’ parameters.
+- Model for the main population parameters of interest (e.g. average cost and benefit), used to perform economic analysis
+
+By jointly using information coming from observed data (i.e. observed likelihood) and from a priori beliefs on missing data mechanisms (i.e. prior distribution) it is possible to derive the chance of missing data occurring in outcome variables as well as to impute the missing values and parameters (via Markov Chain Monte Carlo algorithms).
+
+## Aim of research
+The aim of this research is to develop a full Bayesian approach in order to handle missing data in health economic evaluations by relaxing standard assumptions made on the missing data mechanism and thus extending imputation methods.
+
+The project will focus on two complementary aspects:
+
+Consideration of two potentially correlated missing data mechanisms, i.e. those associated to cost and benefit models, due to the existence of a multivariate outcome with possible missingness in both types of data.
+Provision of an economic interpretation and suggestions with respect to the decision-making problem of government bodies in allocating resources to specific programmes of interventions.
+We will explore these issues through specific case studies.
+<br><br>
+
+<div style="text-align: right; font-size: 12px; color:gray; font-weight: bold; font-style: italic;"> Last updated: `r format(Sys.Date(),"%A %d %B %Y")` </div>
+
+```{r, echo=FALSE,child=here::here("research/refs.qmd")}
+```

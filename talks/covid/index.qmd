@@ -68,6 +68,7 @@ projects:
 
 {{< include ../info.qmd >}}
 
+<br>
 ```{=html}
-<iframe class="slide-deck" src="/slides/armitage/seminar" width="800" height "600"></iframe>
+<iframe style="height:400px;width:75%;border:none;overflow:hidden;" src="/slides/armitage/seminar"></iframe>
 ```
